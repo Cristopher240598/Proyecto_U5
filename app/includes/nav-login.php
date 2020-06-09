@@ -1,4 +1,4 @@
-<?PHP 
+<?PHP
 session_start();
 if ($_SERVER['QUERY_STRING'] == 'noname')
 {

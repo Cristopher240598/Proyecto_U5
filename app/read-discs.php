@@ -14,7 +14,7 @@
                                 <div class="image">
                                     <img class="rounded-circle img-fluid d-block mx-auto imagen" src="img/audifonos.jpg">
                                 </div>
-                                <div class="text-center margen-txt-col">
+                                <div class="text-center margen-txt-col padding-texto-art">
                                     <p class="tamanio-txt">
                                         ID: 5<br>
                                         Titulo: Club life vol. 4<br>
