@@ -1,0 +1,284 @@
+html, body
+{
+    width: 100%;
+    height: 100%;
+}
+
+body
+{
+    display: flex; 
+    flex-direction: column;
+}
+
+.tamanio-logo
+{
+    height: 80px;
+}
+
+.tamanio-letra-nav
+{
+    font-size: 16px!important;
+}
+
+.principal
+{
+    flex: 1 0 auto; 
+}
+
+.principal-1
+{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.formulario
+{
+    border-top:2px solid #ff6a00;
+    background-color:#fff;
+    max-width:500px;
+    margin:auto;padding:40px;
+    box-shadow:0 2px 10px rgba(0,0,0,.075)
+}
+
+.nav-link-usuario
+{
+    color:hsla(0,0%,100%,.5);
+    text-transform:uppercase;
+    font-size:.8rem;
+    font-weight:700;
+    letter-spacing:.1rem
+}
+
+.nav-link-usuario:hover
+{
+    color:hsla(0,0%,100%,.75)
+}
+
+@media (min-width:300px)
+{
+    .btn-mod-gm
+    {
+        margin-bottom:10px
+    }
+}
+
+@media (min-width:992px)
+{
+    .btn-mod-gm
+    {
+        margin-bottom:0;
+        margin-right:10px
+    }
+}
+
+.padding-titulo
+{
+    padding-top: 50px;
+}
+
+.padding-titulo-formularios
+{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.padding-titulo-articulos
+{
+    padding-top: 50px;
+}
+
+.tamanio-titulo
+{
+    font-size: 40px;
+}
+
+.tamanio-subtitulo
+{
+    font-size: 20px;
+}
+
+.padding-nav-logueado
+{
+    padding: 5px 0px;
+}
+
+.opciones-nav
+{
+    margin-right: auto;
+    margin-left: 20px!important;
+}
+
+.espacio-opc
+{
+    margin-right: 15px;
+}
+
+.margen-iconos
+{
+    margin-right: 5px;
+}
+
+.fondo-menu
+{
+    background-color: rgb(245,245,245);
+}
+
+.margen-hr
+{
+    margin-bottom: 4px;
+}
+
+.padding-genero
+{
+    padding-left: 5px;
+}
+
+.icono-usuario
+{
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.usuario
+{
+    font-size: 16px;
+    padding-left: 40px;
+}
+
+.ancho-artista
+{
+    width: 300px;
+}
+
+.ancho-disquera
+{
+    width: 250px;
+}
+
+.ancho-canciones
+{
+    width: 90px;
+}
+
+.ancho-genero
+{
+    width: 260px;
+}
+
+.altura-desc
+{
+    height: 90px!important;
+}
+
+.ancho-imagen
+{
+    width: 100%;
+}
+
+.padding-columnas
+{
+    padding: 20px;
+}
+
+.padding-celda
+{
+    padding: 15px;
+}
+
+.imagen
+{
+    width: 320px;
+    height: 320px;
+}
+
+.margen-txt-col
+{
+    margin-top: 20px;
+}
+
+.tamanio-titulo-col
+{
+    font-size: 30px;
+}
+
+.tamanio-subtitulo-col
+{
+    font-size: 20px;
+}
+
+.btn-color
+{
+    color: rgb(255,255,255);
+}
+
+.largo-id
+{
+    width: 10%;
+}
+
+.largo-genero
+{
+    width: 60%;
+}
+
+.largo-accion
+{
+    width: 30%;
+}
+
+.tamanio-txt
+{
+    font-size: 20px;
+}
+
+.ancho-marca
+{
+    width: 350px;
+}
+
+.ancho-peso
+{
+    width: 90px;
+}
+
+.margen-titulo-com
+{
+    margin-bottom: 30px;
+}
+
+.com-usuario
+{
+    width: 40px;height: 40px;
+    margin-right: 10px;
+}
+
+.tamanio-usuario-com
+{
+    font-size: 17px;
+}
+
+.tamanio-com
+{
+    font-size: 20px;
+}
+
+.ancho-form
+{
+    margin: 0px;max-width: 100%;
+}
+
+.alt-form-com
+{
+    height: 90px!important;
+}
+
+.ancho-btn-com
+{
+    width: 100px!important;
+}
+
+.imagen-usuario
+{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
