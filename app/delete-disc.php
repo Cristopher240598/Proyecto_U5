@@ -1,4 +1,7 @@
-<?PHP require_once './includes/nav-login.php'; ?>
+<?php
+ob_start();
+require_once './includes/nav-login.php';
+?>
 
 <main class="principal principal-1">
     <section>
@@ -29,4 +32,8 @@
         </div>
     </section>
 </main>
-<?php require_once './includes/footer.php'; ?>  
+
+<?php
+ob_end_flush();
+require_once './includes/footer.php';
+?>

@@ -1,4 +1,4 @@
-<?PHP
+<?php
 session_start();
 if ($_SERVER['QUERY_STRING'] == 'noname')
 {
@@ -9,6 +9,7 @@ $usuario = $_SESSION['usuario']['nombre'];
 $imagenUsuario = $_SESSION['usuario']['imagen'];
 require_once './includes/header.php';
 ?>
+
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom padding-nav-logueado">
     <div class="container">
         <a class="navbar-brand">

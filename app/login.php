@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require_once './includes/nav.php';
 
 if (isset($_POST['submit']))
@@ -52,4 +53,7 @@ if (isset($_POST['submit']))
     </section>
 </main>
 
-<?php require_once './includes/footer.php'; ?>  
+<?php
+ob_end_flush();
+require_once './includes/footer.php';
+?>
