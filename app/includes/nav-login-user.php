@@ -7,6 +7,7 @@ if ($_SERVER['QUERY_STRING'] == 'noname')
 }
 $usuario = $_SESSION['usuario']['nombre'];
 $imagenUsuario = $_SESSION['usuario']['imagen'];
+$idUsuarioLog = $_SESSION['usuario']['id'];
 require_once './includes/header.php';
 ?>
 

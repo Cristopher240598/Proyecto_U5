@@ -7,7 +7,7 @@ if (isset($_POST['submit']))
     $usuario = mysqli_real_escape_string($conn, $_POST['usuario']);
     $contrasenia = mysqli_real_escape_string($conn, $_POST['contrasenia']);
     //Iniciar sesión
-    $sql = "SELECT nombre, rol, imagen FROM usuarios "
+    $sql = "SELECT id, nombre, rol, imagen FROM usuarios "
             . "WHERE usuario = '$usuario' AND "
             . "contrasenia = '$contrasenia'";
     $resultado = mysqli_query($conn, $sql);
