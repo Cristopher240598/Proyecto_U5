@@ -5,16 +5,19 @@
             <url>app/update-movie-genre.php</url>
             <bookmark id="1">
                 <name/>
-                <line>6</line>
+                <line>9</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/wamp64/www/Proyecto_U5/app/includes/header.php</file>
+            <file>file:/D:/wamp64/www/Proyecto_U5/app/update-headphones.php</file>
+            <file>file:/D:/wamp64/www/Proyecto_U5/app/search-update-headphones.php</file>
+            <file>file:/D:/wamp64/www/Proyecto_U5/app/comment-headphones.php</file>
+            <file>file:/D:/wamp64/www/Proyecto_U5/app/headphones.php</file>
             <file>file:/D:/wamp64/www/Proyecto_U5/app/assets/css/styles.css</file>
-            <file>file:/D:/wamp64/www/Proyecto_U5/app/register.php</file>
+            <file>file:/D:/wamp64/www/Proyecto_U5/app/includes/nav-login-user.php</file>
         </group>
     </open-files>
 </project-private>
