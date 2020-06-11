@@ -1,4 +1,5 @@
-<?PHP 
+<?php
+ob_start();
 require_once './includes/nav-login.php'; 
 
 $sql = 'SELECT * FROM audifonos ORDER BY marca';
@@ -37,4 +38,8 @@ mysqli_close($conn);
         </div>
     </section>
 </main>
-<?php require_once './includes/footer.php'; ?>  
+
+<?php
+ob_end_flush();
+require_once './includes/footer.php';
+?>
