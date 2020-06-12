@@ -1,6 +1,12 @@
 <?php
 ob_start();
 require_once './includes/nav-login-user.php';
+
+$sql = 'SELECT * FROM productos ORDER BY marca';
+$resultado = mysqli_query($conn, $sql);
+$productos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+mysqli_free_result($resultado);
+mysqli_close($conn);
 ?>
 
 <main class="principal principal-1">
@@ -11,22 +17,22 @@ require_once './includes/nav-login-user.php';
             </div>
             <div class="padding-columnas">
                 <div class="row no-gutters">
-                    
+                    <?php foreach ($productos as $producto){ ?>
                         <div class="col-12 col-md-6 col-lg-4 padding-celda">
                             <div class="clean-product-item">
                                 <div class="image">
-                                    <img class="rounded-circle img-fluid d-block mx-auto imagen" src="img/audifonos.jpg">
+                                    <img class="rounded-circle img-fluid d-block mx-auto imagen" src="<?= $base ?>imagenesproductos/<?php echo htmlspecialchars($producto['imagen']); ?>">
                                 </div>
                                 <div class="text-center product-name margen-txt-col">
-                                    <h2 class="text-info tamanio-titulo-col">Memoria USB</h2>
-                                    <p class="tamanio-subtitulo-col">Kingston</p>
+                                    <h2 class="text-info tamanio-titulo-col"><?php echo htmlspecialchars($producto['nombre']); ?></h2>
+                                    <p class="tamanio-subtitulo-col"><?php echo htmlspecialchars($producto['marca']); ?></p>
                                 </div>
                                 <div class="text-center product-name">
-                                    <a class="btn btn-info btn-color" role="button" href="comment-products.php">Ver</a>
+                                    <a class="btn btn-info btn-color" role="button" href="comment-products.php?id=<?php echo $producto['id'] ?>">Ver</a>
                                 </div>
                             </div>
                         </div>
-                    
+                    <?php } ?>
                 </div>
             </div>
         </div>
