@@ -1,6 +1,6 @@
 <?php
 ob_start();
-require_once './includes/nav-login.php'; 
+require_once './includes/nav-login-user.php';
 
 $sql = 'SELECT * FROM productos ORDER BY marca';
 $resultado = mysqli_query($conn, $sql);
@@ -13,7 +13,7 @@ mysqli_close($conn);
     <section>
         <div class="container">
             <div class="text-center block-heading padding-titulo-formularios">
-                <h2 class="text-info tamanio-titulo">Modificar Productos</h2>
+                <h2 class="text-info tamanio-titulo">Productos</h2>
             </div>
             <div class="padding-columnas">
                 <div class="row no-gutters">
@@ -28,7 +28,7 @@ mysqli_close($conn);
                                     <p class="tamanio-subtitulo-col"><?php echo htmlspecialchars($producto['marca']); ?></p>
                                 </div>
                                 <div class="text-center product-name">
-                                    <a class="btn btn-info btn-color" role="button" href="update-product.php?id=<?php echo $producto['id'] ?>">Modificar</a>
+                                    <a class="btn btn-info btn-color" role="button" href="comment-products.php?id=<?php echo $producto['id'] ?>">Ver</a>
                                 </div>
                             </div>
                         </div>
