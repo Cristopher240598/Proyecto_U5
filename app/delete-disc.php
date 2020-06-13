@@ -3,9 +3,9 @@ ob_start();
 require_once './includes/nav-login.php';
 
 $sql = 'SELECT id, titulo, artista, imagen FROM discos';
-$resultSet = mysqli_query($conn, $sql);
-$discos = mysqli_fetch_all($resultSet, MYSQLI_ASSOC);
-mysqli_free_result($resultSet);
+$resultSetQuery = mysqli_query($conn, $sql);
+$discos = mysqli_fetch_all($resultSetQuery, MYSQLI_ASSOC);
+mysqli_free_result($resultSetQuery);
 
 if (isset($_GET['id']))
 {
@@ -13,11 +13,11 @@ if (isset($_GET['id']))
     
     $sqlImg = "SELECT imagen FROM discos WHERE id = $id";
     
-    $resultSet = mysqli_query($conn, $sqlImg);
+    $resultSetimg= mysqli_query($conn, $sqlImg);
     
-    $img = mysqli_fetch_all($resultSet, MYSQLI_ASSOC);
+    $img = mysqli_fetch_assoc($resultSetimg);
     
-    $imgDiscos = $img[0]['imagen'];
+    $imgDiscos = $img['imagen'];
     
     unlink("imagenesDiscos/$imgDiscos");
     

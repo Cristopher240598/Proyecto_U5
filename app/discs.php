@@ -17,7 +17,7 @@ mysqli_close($conn);
     <section>
         <div class="container">
             <div class="text-center block-heading padding-titulo-formularios">
-                <h2 class="text-info tamanio-titulo">Audífonos</h2>
+                <h2 class="text-info tamanio-titulo">Discos</h2>
             </div>
             <div class="padding-columnas">
                 <div class="row no-gutters">
