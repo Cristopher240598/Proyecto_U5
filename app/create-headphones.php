@@ -46,27 +46,27 @@ if (isset($_POST['submit']))
             <form class="formulario" action="create-headphones.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="marca">Marca</label>
-                    <input class="form-control ancho-marca" type="text" name="marca" id="marca" autofocus>
+                    <input class="form-control ancho-marca" type="text" name="marca" id="marca" autofocus maxlength="200" required>
                 </div>
                 <div class="form-group">
                     <label for="modelo">Modelo</label>
-                    <input class="form-control ancho-artista" type="text" name="modelo" id="modelo" autofocus>
+                    <input class="form-control ancho-artista" type="text" name="modelo" id="modelo" autofocus maxlength="200" required>
                 </div>
                 <div class="form-group">
                     <label for="potencia">Potencia máxima (mW)</label>
-                    <input class="form-control ancho-disquera" type="number" name="potencia" id="potencia" autofocus="">
+                    <input class="form-control ancho-disquera" type="number" name="potencia" id="potencia" autofocus max="99999" min="1" required>
                 </div>
                 <div class="form-group">
                     <label for="peso">Peso (gr)</label>
-                    <input class="form-control ancho-peso" type="number" name="peso" id="peso" autofocus>
+                    <input class="form-control ancho-peso" type="number" name="peso" id="peso" autofocus max="9999" min="1" required>
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Descripción</label>
-                    <textarea class="form-control altura-desc" name="descripcion" id="descripcion" autofocus=""></textarea>
+                    <textarea class="form-control altura-desc" name="descripcion" id="descripcion" autofocus="" maxlength="16,777,215" required></textarea>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="">Imagen</label>
-                    <input type="file" name="imagen" id="imagen" autofocus>
+                    <input type="file" name="imagen" id="imagen" autofocus accept="image/" required>
                 </div>
                 <div class="form-group d-flex justify-content-center">
                     <img class="ancho-imagen" src="" id="imagenSalida">

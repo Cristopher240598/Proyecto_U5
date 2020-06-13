@@ -12,19 +12,19 @@ require_once './includes/nav-login.php';
             <form class="formulario" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="">Título</label>
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" maxlength="200" required>
                 </div>
                 <div class="form-group">
                     <label for="">Reparto</label>
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" maxlength="200" required>
                 </div>
                 <div class="form-group">
                     <label for="">Director</label>
-                    <input class="form-control ancho-disquera" type="text">
+                    <input class="form-control ancho-disquera" type="text" maxlength="200" required="">
                 </div>
                 <div class="form-group">
                     <label for="">Género</label>
-                    <select class="form-control ancho-genero">
+                    <select class="form-control ancho-genero" required>
                         <optgroup label="Género">
                             <option value="1" selected="">Acción</option>
                         </optgroup>
@@ -32,11 +32,11 @@ require_once './includes/nav-login.php';
                 </div>
                 <div class="form-group">
                     <label for="">Descripción</label>
-                    <textarea class="form-control altura-desc"></textarea>
+                    <textarea class="form-control altura-desc" maxlength="16,777,215" required></textarea>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="">Imagen</label>
-                    <input type="file">
+                    <input type="file" accept="image/" required>
                 </div>
                 <div class="form-group d-flex justify-content-center">
                     <img class="ancho-imagen" src="img/discos.jpg">

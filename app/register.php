@@ -70,22 +70,22 @@ if (isset($_POST['submit']))
             <form class="formulario" action="register.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input class="form-control" type="text" name="nombre" id="nombre" autofocus>
+                    <input class="form-control" type="text" name="nombre" id="nombre" autofocus maxlength="50" required>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="imagen">Imagen</label>
-                    <input type="file" accept="image/*" name="imagen" id="imagen" autofocus>
+                    <input type="file" accept="image/*" name="imagen" id="imagen" autofocus required>
                 </div>
                 <div class="form-group d-flex justify-content-center">
                     <img class="ancho-imagen" src="" id="imagenSalida">
                 </div>
                 <div class="form-group">
                     <label for="usuario">Correo electrónico</label>
-                    <input class="form-control item" type="email" name="usuario" id="usuario" autofocus>
+                    <input class="form-control item" type="email" name="usuario" id="usuario" autofocus maxlength="150" required="">
                 </div>
                 <div class="form-group">
                     <label for="contrasenia">Contraseña</label>
-                    <input class="form-control" type="password" name="contrasenia" id="contrasenia" autofocus="">
+                    <input class="form-control" type="password" name="contrasenia" id="contrasenia" autofocus="" maxlength="255">
                 </div>
                 <input class="btn btn-info btn-block" type="submit" name="submit" value="Registrarse">
             </form>

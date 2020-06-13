@@ -11,20 +11,20 @@ require_once './includes/nav-login.php';
             </div>
             <form class="formulario">
                 <div class="form-group">
-                    <label for="">Modelo</label>
-                    <input class="form-control ancho-artista" type="text">
+                    <label for="">Nombre</label>
+                    <input class="form-control ancho-artista" type="text" maxlength="200" required>
                 </div>
                 <div class="form-group">
                     <label for="">Marca</label>
-                    <input class="form-control ancho-marca" type="text">
+                    <input class="form-control ancho-marca" type="text" maxlength="200" required>
                 </div>
                 <div>
                     <label for="">Descripción</label>
-                    <textarea class="form-control altura-desc"></textarea>
+                    <textarea class="form-control altura-desc" maxlength="16,777,215" required></textarea>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="">Imagen</label>
-                    <input type="file">
+                    <input type="file" accept="image/" required>
                 </div>
                 <div class="form-group d-flex justify-content-center">
                     <img class="ancho-imagen" src="img/discos.jpg">
