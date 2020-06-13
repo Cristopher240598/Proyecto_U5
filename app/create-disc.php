@@ -1,81 +1,40 @@
 <?php
-
 ob_start();
 require_once './includes/nav-login.php';
-include './configuracion/connectionDB.php';
 
-$errorMsg = array('titulo' => '', 'artista' => '', 'genero' => '', 'canciones' => '', 'disquera' => '', 'descripcion' => '');
-
-if (isset($_POST['titulo']) and isset($_POST['artista']) and isset($_POST['disquera'])
-    and isset($_POST['canciones']) and isset($_POST['genero']) and isset($_POST['descripcion']))
+if (isset($_POST['submit']))
 {
-    $titulo = $_POST['titulo'];
-    $artista = $_POST['artista'];
-    $genero = $_POST['genero'];
-    $canciones = $_POST['canciones'];
-    $disquera = $_POST['disquera'];
-    $descripcion = $_POST['descripcion'];
-
-    if (!is_string($_POST['titulo']))
+    $título = mysqli_real_escape_string($conn, $_POST['titulo']);
+    $artista = mysqli_real_escape_string($conn, $_POST['artista']);
+    $disquera = mysqli_real_escape_string($conn, $_POST['disquera']);
+    $canciones = mysqli_real_escape_string($conn, $_POST['canciones']);
+    $genero = mysqli_real_escape_string($conn, $_POST['genero']);
+    $descripcion = mysqli_real_escape_string($conn, $_POST['descripcion']);
+    //Guardar la imagen
+    if (isset($_FILES['imagen']))
     {
-        $errorMsg['titulo'] = 'Título debe ser texto <br />';
+        $file = $_FILES['imagen'];
+        $filename = $file['name'];
+        $mimetype = $file['type'];
+        if ($mimetype == "image/jpg" || $mimetype == 'image/jpeg' ||
+                $mimetype == 'image/png' || $mimetype == 'image/gif')
+        {
+            if (!is_dir('imagenesDiscos'))
+            {
+                mkdir('imagenesDiscos', 0777, TRUE);
+            }
+            move_uploaded_file($file['tmp_name'], 'imagenesDiscos/' . $filename);
+        }
+    }
+    $sql = "INSERT INTO audifonos(id_temaDisco, titulo, artista, disquera, numeroCanciones, imagen, descripcion) "
+            . "VALUES('$genero', '$título', '$artista', '$disquera', '$canciones', '$filename', '$descripcion')";
+    if (mysqli_query($conn, $sql))
+    {
+        header('Location: read-discs.php');
     } else
     {
-        $titulo = $_POST['titulo'];
-        
+        echo 'Error al insertar en discos, verifique query: ' . mysqli_error($conn);
     }
-
-    if (!is_string($_POST['artista']))
-    {
-        $errorMsg['artista'] = 'Campo Artista debe ser texto <br />';
-    } else
-    {
-        $artista = $_POST['artista'];
-    }
-
-    if (!is_int($_POST['genero']))
-    {
-        $errorMsg['genero'] = 'Campo Genero debe ser texto <br />';
-    } else
-    {
-        $genero = $_POST['genero'];
-    }
-
-    if (!is_int($_POST['canciones']))
-    {
-        $errorMsg['canciones'] = 'Campo Canciones debe ser número <br />';
-    } else
-    {
-        $canciones = $_POST['canciones'];
-    }
-
-    if (!is_string($_POST['disquera']))
-    {
-        $errorMsg['disquera'] = 'Campo Diquera debe ser texto <br />';
-    } else
-    {
-        $disquera = $_POST['disquera'];
-    }
-    
-    if (!is_string($_POST['descripcion']))
-    {
-        $errorMsg['descripcion'] = 'Campo descripcion debe ser texto <br />';
-    } else
-    {
-        $descripcion = $_POST['descripcion'];
-    }
-    //Falta la imagen
-    $sql = "INSERT INTO discos VALUES ('" . $titulo . "', '" . $artista . "', '" . $disquera . "', '" . $canciones . "', '" . $genero . "', '" . $descripcion . "')";
-
-    if (mysqli_query($connection, $sql))
-    {
-        header('Location: discs.php');
-    } else
-    {
-        echo 'Error en insercion: ' . mysqli_error($connection);
-    }
-
-    mysqli_close($coneccion);
 }
 ?>
 
@@ -121,11 +80,11 @@ if (isset($_POST['titulo']) and isset($_POST['artista']) and isset($_POST['disqu
                     <textarea name="descripcion" id="descripcion" class="form-control altura-desc" rows="4" cols="50" style="resize: none" required="true"></textarea>
                 </div>
                 <div class="form-group d-flex flex-column">
-                    <label for="">Imagen</label>
-                    <input type="file">
+                    <label for="">Imagen*</label>
+                    <input type="file" name="imagen" id="imagen" required="true"  autofocus>
                 </div>
                 <div class="form-group d-flex justify-content-center">
-                    <img class="ancho-imagen" src="img/discos.jpg">
+                    <img class="ancho-imagen" src="" id="imagenSalida">
                 </div>
                 <input class="btn btn-success btn-block" type="submit" name="submit" value="Crear">
             </form>
