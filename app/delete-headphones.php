@@ -11,8 +11,8 @@ if (isset($_GET['id']))
     $id = mysqli_real_escape_string($conn, $_GET['id']);
     $sql2 = "SELECT imagen FROM audifonos WHERE id = $id";
     $res = mysqli_query($conn, $sql2);
-    $img = mysqli_fetch_assoc($res);
-    $imgAudifonos = $img['imagen'];
+    $img = mysqli_fetch_all($res, MYSQLI_ASSOC);
+    $imgAudifonos = $img[0]['imagen'];
     unlink("imagenesAudifonos/$imgAudifonos");
     $sql = "DELETE FROM audifonos WHERE id = $id";
     if (mysqli_query($conn, $sql))
