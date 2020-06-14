@@ -67,15 +67,15 @@ mysqli_close($conn);
             <form class="formulario" action="update-disc.php?id=<?php echo $discos['id'] ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="">Título</label>
-                    <input class="form-control ancho-marca" type="text" name="titulo" id="titulo" value="<?php echo htmlspecialchars($discos['titulo']); ?>" autofocus>
+                    <input class="form-control ancho-marca" type="text" name="titulo" id="titulo" value="<?php echo htmlspecialchars($discos['titulo']); ?>" maxlength="200" required autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Artista</label>
-                    <input class="form-control ancho-artista" type="text" name="artista" id="artista" value="<?php echo htmlspecialchars($discos['artista']); ?>" autofocus>
+                    <input class="form-control ancho-artista" type="text" name="artista" id="artista" value="<?php echo htmlspecialchars($discos['artista']); ?>" maxlength="200" required autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Disquera</label>
-                    <input class="form-control ancho-disquera" type="text" name="disquera" id="disquera" value="<?php echo htmlspecialchars($discos['disquera']); ?>" autofocus>
+                    <input class="form-control ancho-disquera" type="text" name="disquera" id="disquera" value="<?php echo htmlspecialchars($discos['disquera']); ?>" maxlength="200" required autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">No. Canciones</label>
