@@ -26,7 +26,7 @@ if (isset($_POST['submit']))
         }
     }
     $sql = "INSERT INTO peliculas(id_temaPelicula, titulo, reparto , director, imagen, descripcion ) "
-            . "VALUES('$categoriapeli', '$titulopeli', $repartopeli, $directorpeli, '$filename', '$descripcion')";
+            . "VALUES('$categoriapeli', '$titulopeli', '$repartopeli', '$directorpeli', '$filename', '$descripcion')";
     if (mysqli_query($conn, $sql))
     {
         header('Location: read-movies.php');
