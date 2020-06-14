@@ -17,11 +17,11 @@ if (isset($_POST['submit']))
         if ($mimetype == "image/jpg" || $mimetype == 'image/jpeg' ||
                 $mimetype == 'image/png' || $mimetype == 'image/gif')
         {
-            if (!is_dir('imagenesproductos'))
+            if (!is_dir('imagenesProductos'))
             {
-                mkdir('imagenesproductos', 0777, TRUE);
+                mkdir('imagenesProductos', 0777, TRUE);
             }
-            move_uploaded_file($file['tmp_name'], 'imagenesproductos/' . $filename);
+            move_uploaded_file($file['tmp_name'], 'imagenesProductos/' . $filename);
         }
     }
     $sql = "INSERT INTO productos(nombre, marca, imagen, descripcion) "
@@ -62,9 +62,6 @@ if (isset($_POST['submit']))
                     <textarea class="form-control altura-desc" name="descripcion" id="descripcion" autofocus=""></textarea>
                 </div>
                 
-                <div class="form-group d-flex justify-content-center">
-<!--                    <img class="ancho-imagen" src="img/discos.jpg">-->
-                </div>
                 <input class="btn btn-info btn-block" type="submit" name="submit" value="Crear">
             </form>
         </div>

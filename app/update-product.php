@@ -21,18 +21,18 @@ if (isset($_POST['submit']) && isset($_GET['id']))
     //Guardar la imagen
     if (isset($_FILES['imagen']) && $_FILES['imagen']['name'] != null)
     {
-        unlink("imagenesproductos/$imagenAudifonos");
+        unlink("imagenesProductos/$imagenproductos");
         $file = $_FILES['imagen'];
         $filename = $file['name'];
         $mimetype = $file['type'];
         if ($mimetype == "image/jpg" || $mimetype == 'image/jpeg' ||
                 $mimetype == 'image/png' || $mimetype == 'image/gif')
         {
-            if (!is_dir('imagenesproductos'))
+            if (!is_dir('imagenesProductos'))
             {
-                mkdir('imagenesproductos', 0777, TRUE);
+                mkdir('imagenesProductos', 0777, TRUE);
             }
-            move_uploaded_file($file['tmp_name'], 'imagenesproductos/' . $filename);
+            move_uploaded_file($file['tmp_name'], 'imagenesProductos/' . $filename);
         }
         $sql = "UPDATE productos SET nombre = '$nom', marca = '$mar', "
                 . "imagen = '$filename', descripcion = '$descripcion' "
@@ -59,7 +59,7 @@ mysqli_close($conn);
     <section>
         <div class="container">
             <div class="text-center block-heading padding-titulo-formularios">
-                <h2 class="text-info tamanio-titulo">Modificar audífonos</h2>
+                <h2 class="text-info tamanio-titulo">Modificar Productos</h2>
             </div>
             <form class="formulario" action="update-product.php?id=<?php echo $productos['id'] ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
@@ -75,7 +75,7 @@ mysqli_close($conn);
                     <input type="file" name="imagen" id="imagen" autofocus>
                 </div>
                 <div class="form-group d-flex justify-content-center">
-                    <img class="ancho-imagen" id="imagenSalida" src="<?= $base ?>imagenesproductos/<?php echo htmlspecialchars($productos['imagen']); ?>">
+                    <img class="ancho-imagen" id="imagenSalida" src="<?= $base ?>imagenesProductos/<?php echo htmlspecialchars($productos['imagen']); ?>">
                 </div>
                 <div class="form-group">
                     <label for="">Descripción</label>
