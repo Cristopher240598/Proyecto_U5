@@ -34,6 +34,10 @@ if (isset($_POST['submit']))
     {
         echo 'Error en la insercción de pelicula: ' . mysqli_error($conn);
     }
+
+    <!--
+    ssss
+    -->
 }
 
 ?>
@@ -61,12 +65,12 @@ if (isset($_POST['submit']))
                     <label for="genero">Género</label>
                     <select id="genero" name="genero" class="form-control ancho-genero" value="<?php echo htmlspecialchars($categoriapeli) ?>" required>
                         <option value=" ">--Seleccionar--</option>
-                         <?php 
+                         <?php
                          $sql= 'SELECT * FROM temas_peliculas';
                          $result= mysqli_query($conn, $sql);
 
-                          while($categorias = mysqli_fetch_array($result)) 
-                          echo "<option  value='".$categorias["id"]."'>".$categorias["genero"]."</option>"; 
+                          while($categorias = mysqli_fetch_array($result))
+                          echo "<option  value='".$categorias["id"]."'>".$categorias["genero"]."</option>";
 
                              ?>
                     </select>
