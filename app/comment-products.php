@@ -53,7 +53,7 @@ if (isset($_POST['submit']) && isset($_GET['id']))
             <div class="row align-items-center">
                 <div class="col-lg-6 order-lg-1">
                     <div class="p-5">
-                        <img class="rounded-circle img-fluid" src="<?= $base ?>imagenesproductos/<?php echo htmlspecialchars($productos['imagen']); ?>">
+                        <img class="rounded-circle img-fluid" src="<?= $base ?>imagenesProductos/<?php echo htmlspecialchars($productos['imagen']); ?>">
                     </div>
                 </div>
                 <div class="col-lg-6 order-lg-2">
