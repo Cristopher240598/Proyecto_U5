@@ -21,7 +21,7 @@ mysqli_close($conn);
                         <div class="col-12 col-md-6 col-lg-4 padding-celda">
                             <div class="clean-product-item">
                                 <div class="image">
-                                    <img class="rounded-circle img-fluid d-block mx-auto imagen" src="<?= $base ?>imagenesproductos/<?php echo htmlspecialchars($productos['imagen']); ?>">
+                                    <img class="rounded-circle img-fluid d-block mx-auto imagen" src="<?= $base ?>imagenesProductos/<?php echo htmlspecialchars($productos['imagen']); ?>">
                                 </div>
                                 <div class="text-center margen-txt-col padding-texto-art">
                                     <p class="tamanio-txt">
