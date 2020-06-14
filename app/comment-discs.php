@@ -23,7 +23,7 @@ if (isset($_GET['id']))
     
     $resComD = mysqli_query($conn, $sqlComD);
     
-    $comentriosAu = mysqli_fetch_all($resComD, MYSQLI_ASSOC);
+    $comentariosD = mysqli_fetch_all($resComD, MYSQLI_ASSOC);
     
     mysqli_free_result($resComD);
 }

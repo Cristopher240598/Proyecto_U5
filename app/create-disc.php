@@ -26,7 +26,7 @@ if (isset($_POST['submit']))
             move_uploaded_file($file['tmp_name'], 'imagenesDiscos/' . $filename);
         }
     }
-    $sql = "INSERT INTO audifonos(id_temaDisco, titulo, artista, disquera, numeroCanciones, imagen, descripcion) "
+    $sql = "INSERT INTO discos(id_temaDisco, titulo, artista, disquera, numeroCanciones, imagen, descripcion) "
             . "VALUES('$genero', '$título', '$artista', '$disquera', '$canciones', '$filename', '$descripcion')";
     if (mysqli_query($conn, $sql))
     {
@@ -65,35 +65,36 @@ if (isset($_POST['submit']))
                     <label for="genero">Género*</label>
                     <select class="form-control ancho-genero" name="genero" id="genero" required="true">
                         <optgroup label="Géneros musicales">
-                            <option value="1">Rock</option>
-                            <option value="2">Pop</option>
-                            <option value="3">Electrónica</option>
-                            <option value="4">Banda/Regional Mexicano</option>
-                            <option value="5">Metal</option>
-                            <option value="6">Opera</option>
-                            <option value="7">Ritmos latinos</option>
+                            <?php
+                            $sqlGeneros = $mysqli->query("SELECT * FROM temas_discos");
+                            while ($discosG = mysqli_fetch_array($sqlGeneros))
+                            {
+                                ?>
+                            <option value="<?php echo htmlspecialchars($discosG['id']); ?>"> <?php echo htmlspecialchars($discosG['genero']); ?> </option>
+                           <?php }
+                                ?>
                         </optgroup>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="descripcion">Descripción*</label>
-                    <textarea name="descripcion" id="descripcion" class="form-control altura-desc" rows="4" cols="50" style="resize: none" required="true"></textarea>
-                </div>
-                <div class="form-group d-flex flex-column">
-                    <label for="">Imagen*</label>
-                    <input type="file" name="imagen" id="imagen" required="true"  autofocus>
-                </div>
-                <div class="form-group d-flex justify-content-center">
-                    <img class="ancho-imagen" src="" id="imagenSalida">
-                </div>
-                <input class="btn btn-success btn-block" type="submit" name="submit" value="Crear">
-            </form>
-            <p class="text-danger">* <b>Requerido</b></p>
-        </div>
-    </section>
-</main>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción*</label>
+                        <textarea name="descripcion" id="descripcion" class="form-control altura-desc" rows="4" cols="50" style="resize: none" required="true"></textarea>
+                    </div>
+                    <div class="form-group d-flex flex-column">
+                        <label for="">Imagen*</label>
+                        <input type="file" name="imagen" id="imagen" required="true"  autofocus>
+                    </div>
+                    <div class="form-group d-flex justify-content-center">
+                        <img class="ancho-imagen" src="" id="imagenSalida">
+                    </div>
+                    <input class="btn btn-success btn-block" type="submit" name="submit" value="Crear">
+                </form>
+                <p class="text-danger">* <b>Requerido</b></p>
+            </div>
+        </section>
+    </main>
 
-<?php
-ob_end_flush();
-require_once './includes/footer.php';
-?>
+    <?php
+    ob_end_flush();
+    require_once './includes/footer.php';
+    ?>
