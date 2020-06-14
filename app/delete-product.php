@@ -11,9 +11,9 @@ if (isset($_GET['id']))
     $id = mysqli_real_escape_string($conn, $_GET['id']);
     $sql2 = "SELECT imagen FROM productos WHERE id = $id";
     $res = mysqli_query($conn, $sql2);
-    $img = mysqli_fetch_assoc($res, MYSQLI_ASSOC);
+    $img = mysqli_fetch_assoc($res);
     $imgproductos = $img['imagen'];
-    unlink("imagenesproductos/$imgproductos");
+    unlink("imagenesProductos/$imgproductos");
     $sql = "DELETE FROM productos WHERE id = $id";
     if (mysqli_query($conn, $sql))
     {
@@ -39,7 +39,7 @@ mysqli_close($conn);
                         <div class="col-12 col-md-6 col-lg-4 padding-celda">
                             <div class="clean-product-item">
                                 <div class="image">
-                                    <img class="rounded-circle img-fluid d-block mx-auto imagen" src="<?= $base ?>imagenesproductos/<?php echo htmlspecialchars($producto['imagen']); ?>">
+                                    <img class="rounded-circle img-fluid d-block mx-auto imagen" src="<?= $base ?>imagenesProductos/<?php echo htmlspecialchars($producto['imagen']); ?>">
                                 </div>
                                 <div class="text-center product-name margen-txt-col">
                                     <h2 class="text-info tamanio-titulo-col"><?php echo htmlspecialchars($producto['nombre']); ?></h2>
