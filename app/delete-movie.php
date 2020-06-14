@@ -11,8 +11,8 @@ if (isset($_GET['id']))
     $id = mysqli_real_escape_string($conn, $_GET['id']);
     $sqlimagen = "SELECT imagen FROM peliculas WHERE id = $id";
     $res = mysqli_query($conn, $sqlimagen);
-    $img = mysqli_fetch_all($res, MYSQLI_ASSOC);
-    $imgagenpeli = $img[0]['imagen'];
+    $img = mysqli_fetch_assoc($res);
+    $imgagenpeli = $img['imagen'];
     unlink("imagenesPeliculas/$imgagenpeli");
     $sql = "DELETE FROM peliculas WHERE id = $id";
     if (mysqli_query($conn, $sql))
