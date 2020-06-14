@@ -2,11 +2,24 @@
 ob_start();
 require_once './includes/nav-login.php';
 
-$genero = mysqli_real_escape_string($conn, $_POST['genero']);
+//$genero = mysqli_real_escape_string($conn, $_POST['genero']);
 $sql = "SELECT * FROM temas_peliculas";
 $result = mysqli_query($conn, $sql);
-$temas = mysqli_fetch_array($result);
+$temas = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_free_result($result);
+
+if (isset($_GET['id']))
+{
+    $id = mysqli_real_escape_string($conn, $_GET['id']);
+    $sql = "DELETE FROM temas_peliculas WHERE id = $id";
+    if (mysqli_query($conn, $sql))
+    {
+        header('Location: movie-genre.php');
+    } else
+    {
+        echo 'Error al eliminar género de películas: ' . mysqli_error($conn);
+    }
+}
 mysqli_close($conn);
 ?>
 
@@ -30,17 +43,16 @@ mysqli_close($conn);
                             <?php
                             foreach ($temas as $items) {
                                 ?>
-                            <form method="POST" action="movie-genre.php">
-                                <tr>
-                                    <td class = "largo-id"> <?php echo htmlspecialchars($items['id']); ?> </td>
-                                    <td class = "largo-genero"> <?php echo htmlspecialchars($items['genero']); ?> </td>
-                                    <input class="btn btn-info btn-mod-gm" role="button" href="update-music-genre.php">Modificar</a>
-                                    <input class="btn btn-danger" role="button" href="#">Eliminar</a>
-                                </tr>
-                            </form>
-                        <?php } ?>                       
+                            <tr>
+                                <td class = "largo-id"><?php echo htmlspecialchars($items['id']); ?></td>
+                                <td class = "largo-genero"><?php echo htmlspecialchars($items['genero']); ?></td>
+                                <td class="largo-accion">
+                                    <a class="btn btn-info btn-mod-gm" role="button" href="update-movie-genre.php?id=<?php echo $items['id'] ?>">Modificar</a>
+                                    <a class="btn btn-danger" role="button" href="movie-genre.php?id=<?php echo $items['id'] ?>">Eliminar</a>
+                                </td>
+                            </tr>
+                            <?php } ?> 
                         </tbody>
-
                     </table>
                 </div>
             </div>

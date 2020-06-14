@@ -8,10 +8,10 @@ if (isset($_POST['submit']))
             . "VALUES('$genero')";
     if (mysqli_query($conn, $sql))
     {
-        header('Location: read-movies.php'); // crea tu vista donde listas los generos y la rediriges ahi
+        header('Location: movie-genre.php');
     } else
     {
-        echo 'Error al insertar en temas discos, verifique query: ' . mysqli_error($conn);
+        echo 'Error al insertar en temas peliculas, verifique query: ' . mysqli_error($conn);
     }
 }
 ?>

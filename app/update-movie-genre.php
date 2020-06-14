@@ -1,6 +1,29 @@
 <?php
 ob_start();
 require_once './includes/nav-login.php';
+
+if (isset($_GET['id']))
+{
+    $id = mysqli_real_escape_string($conn, $_GET['id']);
+    $sql = "SELECT * FROM temas_peliculas WHERE id = $id";
+    $result = mysqli_query($conn, $sql);
+    $temas = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+}
+
+if (isset($_POST['submit']) && isset($_GET['id']))
+{
+    $genero = mysqli_real_escape_string($conn, $_POST['genero']);    
+    $sql = "UPDATE temas_peliculas SET genero = '$genero' WHERE id = $id";
+    if (mysqli_query($conn, $sql))
+    {
+        header('Location: movie-genre.php');
+    } else
+    {
+        echo 'Error al actualizar en temas discos, verifique query: ' . mysqli_error($conn);
+    }
+}
+mysqli_close($conn);
 ?>
 
 <main class="principal principal-1">
@@ -9,10 +32,10 @@ require_once './includes/nav-login.php';
             <div class="text-center block-heading padding-titulo-formularios">
                 <h2 class="text-info tamanio-titulo">Modificar género de película</h2>
             </div>
-            <form class="formulario">
+            <form class="formulario" method="POST" action="update-movie-genre.php?id=<?php echo $temas['id'] ?>">
                 <div class="form-group">
                     <label for="">Género de película</label>
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" name="genero" id="genero" value="<?php echo htmlspecialchars($temas['genero']); ?>">
                 </div>
                 <input class="btn btn-info btn-block" type="submit" name="submit" value="Guardar cambios">
             </form>
