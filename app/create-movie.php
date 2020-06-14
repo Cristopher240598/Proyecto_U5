@@ -47,19 +47,19 @@ if (isset($_POST['submit']))
             <form class="formulario" enctype="multipart/form-data" action="create-movie.php" method="POST">
                 <div class="form-group">
                     <label for="titulo">Título</label>
-                    <input id="titulo" name="titulo" class="form-control" type="text" value="<?php echo htmlspecialchars($titulopeli) ?>" autofocus="autofocus" maxlength="200" required>
+                    <input id="titulo" name="titulo" class="form-control" type="text" autofocus="autofocus" maxlength="200" required>
                 </div>
                 <div class="form-group">
                     <label for="reparto">Reparto</label>
-                    <input id="reparto" name="reparto" class="form-control" type="text" value="<?php echo htmlspecialchars($repartopeli) ?>" maxlength="200" required>
+                    <input id="reparto" name="reparto" class="form-control" type="text" maxlength="200" required>
                 </div>
                 <div class="form-group">
                     <label for="director">Director</label>
-                    <input id="director" name="director" class="form-control ancho-disquera" type="text" value="<?php echo htmlspecialchars($directorpeli) ?>" maxlength="200" required="">
+                    <input id="director" name="director" class="form-control ancho-disquera" type="text"  maxlength="200" required="">
                </div>
                 <div class="form-group">
                     <label for="genero">Género</label>
-                    <select id="genero" name="genero" class="form-control ancho-genero" value="<?php echo htmlspecialchars($categoriapeli) ?>" required>
+                    <select id="genero" name="genero" class="form-control ancho-genero" required>
                         <option value=" ">--Seleccionar--</option>
                          <?php 
                          $sql= 'SELECT * FROM temas_peliculas';
@@ -73,11 +73,11 @@ if (isset($_POST['submit']))
                </div>
                 <div class="form-group">
                     <label for="descripcion">Descripción</label>
-                    <textarea id="descripcion" name="descripcion" class="form-control altura-desc"  maxlength="16,777,215" required><?php echo htmlspecialchars($descripcionpeli) ?></textarea>
+                    <textarea id="descripcion" name="descripcion" class="form-control altura-desc"  maxlength="16,777,215" required></textarea>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="imagen">Imagen</label>
-                    <input id="imagen" name="imagen" type="file" value="<?php echo htmlspecialchars($filename) ?>" accept="image/*" required>
+                    <input id="imagen" name="imagen" type="file"  accept="image/*" required>
                 </div>
            </form>
         </div>
