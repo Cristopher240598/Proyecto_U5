@@ -69,33 +69,33 @@ mysqli_close($conn);
             <form class="formulario" enctype="multipart/form-data" action="update-movie.php?id=<?php echo $peliculas['id'] ?>" method="POST">
                 <div class="form-group">
                     <label>Título</label>
-                    <input class="form-control" type="text" name="titulo" id="titulo" value="<?php echo htmlspecialchars($peliculas['titulo']); ?>" autofocus maxlength="200" required>
+                    <input class="form-control" type="text" name="titulo" id="titulo" value="<?php echo htmlspecialchars($peliculas['titulo']); ?>" autofocus onchange="valtexto200('titulo')" maxlength="200" required>
                 </div>
                 <div class="form-group">
                     <label>Reparto</label>
-                    <input class="form-control" type="text" name="reparto" id="reparto" value="<?php echo htmlspecialchars($peliculas['reparto']); ?>" autofocus maxlength="200" required>
+                    <input class="form-control" type="text" name="reparto" id="reparto" value="<?php echo htmlspecialchars($peliculas['reparto']); ?>" autofocus onchange="valtexto200('reparto')" maxlength="200" required>
                 </div>
                 <div class="form-group">
                     <label>Director</label>
-                    <input class="form-control ancho-disquera" type="text" name="director" id="director" value="<?php echo htmlspecialchars($peliculas['director']); ?>" autofocus maxlength="200" required="">
+                    <input class="form-control ancho-disquera" type="text" name="director" id="director" value="<?php echo htmlspecialchars($peliculas['director']); ?>" autofocus onchange="valtexto200('director')" maxlength="200" required="">
                 </div>
                 <div class="form-group">
                     <label>Género</label>
                     <select class="form-control ancho-genero" name="genero" id="genero" value="<?php echo htmlspecialchars($peliculas['genero']); ?>" autofocus required>
                         <option value=" ">--Seleccionar--</option>
-                         <?php 
+                         <?php
                          $sql= 'SELECT * FROM temas_peliculas';
                          $result= mysqli_query($conn, $sql);
 
-                          while($categorias = mysqli_fetch_array($result)) 
-                          echo "<option  value='".$categorias["id"]."'>".$categorias["genero"]."</option>"; 
+                          while($categorias = mysqli_fetch_array($result))
+                          echo "<option  value='".$categorias["id"]."'>".$categorias["genero"]."</option>";
 
                              ?>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Descripción</label>
-                    <textarea class="form-control altura-desc" id="descripcion" name="descripcion"  maxlength="16,777,215" required><?php echo htmlspecialchars($peliculas['descripcion']); ?></textarea>
+                    <textarea class="form-control altura-desc" id="descripcion" name="descripcion"  maxlength="16,777,215" onchange="valDesc('descripcion')" required><?php echo htmlspecialchars($peliculas['descripcion']); ?></textarea>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label>Imagen</label>
@@ -109,6 +109,26 @@ mysqli_close($conn);
         </div>
     </section>
 </main>
+
+<script>
+function valtexto200(idinput){
+  x = document.getElementById(idinput).value;
+  if (validartexto200(x)) {
+    document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+  }else{
+    document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+  }
+}
+
+function valDesc(idinput){
+  x = document.getElementById(idinput).value;
+  if (validardesc(x)) {
+    document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+  }else{
+    document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+  }
+}
+</script>
 
 <?php
 ob_end_flush();

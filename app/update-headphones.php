@@ -66,23 +66,23 @@ mysqli_close($conn);
             <form class="formulario" action="update-headphones.php?id=<?php echo $audifonos['id'] ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="">Marca</label>
-                    <input class="form-control ancho-marca" type="text" name="marca" id="marca" value="<?php echo htmlspecialchars($audifonos['marca']); ?>" autofocus maxlength="200" required>
+                    <input class="form-control ancho-marca" type="text" name="marca" id="marca" value="<?php echo htmlspecialchars($audifonos['marca']); ?>" autofocus onchange="valtexto200('marca')" maxlength="200" required>
                 </div>
                 <div class="form-group">
                     <label for="">Modelo</label>
-                    <input class="form-control ancho-artista" type="text" name="modelo" id="modelo" value="<?php echo htmlspecialchars($audifonos['modelo']); ?>" autofocus maxlength="200" required>
+                    <input class="form-control ancho-artista" type="text" name="modelo" id="modelo" value="<?php echo htmlspecialchars($audifonos['modelo']); ?>" autofocus onchange="valtexto200('modelo')" maxlength="200" required>
                 </div>
                 <div class="form-group">
                     <label for="">Potencia máxima (mW)</label>
-                    <input class="form-control ancho-disquera" type="number" name="potencia" id="potencia" value="<?php echo htmlspecialchars($audifonos['potenciaMaxima']); ?>" autofocus max="99999" min="1" required>
+                    <input class="form-control ancho-disquera" type="number" name="potencia" id="potencia" value="<?php echo htmlspecialchars($audifonos['potenciaMaxima']); ?>" autofocus onchange="valpotencia('potencia')" max="99999" min="1" required>
                 </div>
                 <div class="form-group">
                     <label for="">Peso (gr)</label>
-                    <input class="form-control ancho-peso" type="number" name="peso" id="peso" value="<?php echo htmlspecialchars($audifonos['peso']); ?>" autofocus max="9999" min="1" required>
+                    <input class="form-control ancho-peso" type="number" name="peso" id="peso" value="<?php echo htmlspecialchars($audifonos['peso']); ?>" autofocus onchange="valpeso('peso')" max="9999" min="1" required>
                 </div>
                 <div class="form-group">
                     <label for="">Descripción</label>
-                    <textarea class="form-control altura-desc" name="descripcion" id="descripcion" autofocus maxlength="16,777,215" required><?php echo htmlspecialchars($audifonos['descripcion']); ?></textarea>
+                    <textarea class="form-control altura-desc" name="descripcion" id="descripcion" autofocus maxlength="16,777,215" onchange="valDesc('descripcion')" required><?php echo htmlspecialchars($audifonos['descripcion']); ?></textarea>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="">Imagen</label>
@@ -97,7 +97,45 @@ mysqli_close($conn);
     </section>
 </main>
 
-<?php 
+<script>
+function valtexto200(idinput){
+  x = document.getElementById(idinput).value;
+  if (validartexto200(x)) {
+    document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+  }else{
+    document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+  }
+}
+
+function valDesc(idinput){
+  x = document.getElementById(idinput).value;
+  if (validardesc(x)) {
+    document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+  }else{
+    document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+  }
+}
+
+function valpotencia(idinput){
+  x = document.getElementById(idinput).value;
+  if (validarnumero5(x)) {
+    document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+  }else{
+    document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+  }
+}
+
+function valpeso(idinput){
+  x = document.getElementById(idinput).value;
+  if (validarnumero4(x)) {
+    document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+  }else{
+    document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+  }
+}
+</script>
+
+<?php
 ob_end_flush();
-require_once './includes/footer.php'; 
-?>  
+require_once './includes/footer.php';
+?>

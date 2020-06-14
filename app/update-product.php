@@ -64,11 +64,11 @@ mysqli_close($conn);
             <form class="formulario" action="update-product.php?id=<?php echo $productos['id'] ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="">Nombre</label>
-                    <input class="form-control ancho-marca" type="text" name="nombre" id="nombre" value="<?php echo htmlspecialchars($productos['nombre']); ?>" autofocus maxlength="200" required>
+                    <input class="form-control ancho-marca" type="text" name="nombre" id="nombre" value="<?php echo htmlspecialchars($productos['nombre']); ?>" autofocus onchange="valtexto200('nombre')" maxlength="200" required>
                 </div>
                 <div class="form-group">
                     <label for="">Marca</label>
-                    <input class="form-control ancho-artista" type="text" name="marca" id="marca" value="<?php echo htmlspecialchars($productos['marca']); ?>" autofocus maxlength="200" required>
+                    <input class="form-control ancho-artista" type="text" name="marca" id="marca" value="<?php echo htmlspecialchars($productos['marca']); ?>" autofocus onchange="valtexto200('marca')" maxlength="200" required>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="">Imagen</label>
@@ -79,16 +79,36 @@ mysqli_close($conn);
                 </div>
                 <div class="form-group">
                     <label for="">Descripción</label>
-                    <textarea class="form-control altura-desc" name="descripcion" id="descripcion" autofocus maxlength="16,777,215" required><?php echo htmlspecialchars($productos['descripcion']); ?></textarea>
+                    <textarea class="form-control altura-desc" name="descripcion" id="descripcion" autofocus maxlength="16,777,215" onchange="valDesc('descripcion')" required><?php echo htmlspecialchars($productos['descripcion']); ?></textarea>
                 </div>
-                
+
                 <input class="btn btn-info btn-block" type="submit" name="submit" value="Guardar cambios">
             </form>
         </div>
     </section>
 </main>
 
-<?php 
+<script>
+function valtexto200(idinput){
+  x = document.getElementById(idinput).value;
+  if (validartexto200(x)) {
+    document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+  }else{
+    document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+  }
+}
+
+function valDesc(idinput){
+  x = document.getElementById(idinput).value;
+  if (validardesc(x)) {
+    document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+  }else{
+    document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+  }
+}
+</script>
+
+<?php
 ob_end_flush();
-require_once './includes/footer.php'; 
-?>  
+require_once './includes/footer.php';
+?>

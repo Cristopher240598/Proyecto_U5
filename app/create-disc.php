@@ -47,19 +47,19 @@ if (isset($_POST['submit']))
             <form class="formulario" method="POST" action="create-disc.php" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="">Título*</label>
-                    <input class="form-control" name="titulo" id="titulo" type="text" pattern="[A-Za-z]+" required="true">
+                    <input class="form-control" name="titulo" id="titulo" onchange="valtexto200('titulo')" maxlength="200" type="text" required>
                 </div>
                 <div class="form-group">
                     <label for="">Artista*</label>
-                    <input class="form-control ancho-artista" name="artista" id="artista" type="text" pattern="[A-Za-z]+" required="true">
+                    <input class="form-control ancho-artista" name="artista" onchange="valtexto200('artista')" id="artista" maxlength="200" type="text" required>
                 </div>
                 <div class="form-group">
                     <label for="">Disquera*</label>
-                    <input class="form-control ancho-disquera" type="text" name="disquera" id="disquera" pattern="[A-Za-z]+" required="true">
+                    <input class="form-control ancho-disquera" type="text" name="disquera" id="disquera" onchange="valtexto200('disquera')" maxlength="200" required>
                 </div>
                 <div class="form-group">
                     <label for="">Número de canciones*</label>
-                    <input class="form-control ancho-canciones" type="number" min="1" max="99" maxlength="2" name="canciones" id="canciones" required="true">
+                    <input class="form-control ancho-canciones" type="number" name="canciones" onchange="valNumCanciones('canciones')" id="canciones" maxlength="200" required>
                 </div>
                 <div class="form-group">
                     <label for="genero">Género*</label>
@@ -77,21 +77,53 @@ if (isset($_POST['submit']))
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Descripción*</label>
-                    <textarea name="descripcion" id="descripcion" class="form-control altura-desc" rows="4" cols="50" style="resize: none" required="true"></textarea>
+                    <textarea name="descripcion" id="descripcion" class="form-control altura-desc" rows="4" cols="50" onchange="valDesc('descripcion')" style="resize: none" maxlength="16,777,215" required="true"></textarea>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="">Imagen*</label>
-                    <input type="file" name="imagen" id="imagen" required="true"  autofocus>
+                    <input type="file" name="imagen" id="imagen" required="true" autofocus>
                 </div>
                 <div class="form-group d-flex justify-content-center">
                     <img class="ancho-imagen" src="" id="imagenSalida">
                 </div>
-                <input class="btn btn-success btn-block" type="submit" name="submit" value="Crear">
+                <input class="btn btn-success btn-block" type="submit" id="bsubmit" name="submit" value="Crear" >
             </form>
             <p class="text-danger">* <b>Requerido</b></p>
         </div>
     </section>
 </main>
+
+<script>
+
+      function valtexto200(idinput){
+        x = document.getElementById(idinput).value;
+        if (validartexto200(x)) {
+          document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+        }else{
+          document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+        }
+      }
+
+      function valNumCanciones(idinput){
+        x = document.getElementById(idinput).value;
+        alert("987654")
+        if (validarnumero2(x)) {
+          document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+        }else{
+          document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+        }
+      }
+
+      function valDesc(idinput){
+        x = document.getElementById(idinput).value;
+        if (validardesc(x)) {
+          document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+        }else{
+          document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+        }
+      }
+
+</script>
 
 <?php
 ob_end_flush();

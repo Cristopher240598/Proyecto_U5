@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
         <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
         <link rel="stylesheet" href="assets/css/styles.css">
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/validaciones.js"></script>
     </head>
     <body>
 <?php

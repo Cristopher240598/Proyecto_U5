@@ -34,10 +34,6 @@ if (isset($_POST['submit']))
     {
         echo 'Error en la insercción de pelicula: ' . mysqli_error($conn);
     }
-
-    <!--
-    ssss
-    -->
 }
 
 ?>
@@ -51,15 +47,15 @@ if (isset($_POST['submit']))
             <form class="formulario" enctype="multipart/form-data" action="create-movie.php" method="POST">
                 <div class="form-group">
                     <label for="titulo">Título</label>
-                    <input id="titulo" name="titulo" class="form-control" type="text" value="<?php echo htmlspecialchars($titulopeli) ?>" autofocus="autofocus" maxlength="200" required>
+                    <input id="titulo" name="titulo" class="form-control" type="text" value="<?php echo htmlspecialchars($titulopeli) ?>" autofocus="autofocus" onchange="valtexto200('titulo')" maxlength="200" required>
                 </div>
                 <div class="form-group">
                     <label for="reparto">Reparto</label>
-                    <input id="reparto" name="reparto" class="form-control" type="text" value="<?php echo htmlspecialchars($repartopeli) ?>" maxlength="200" required>
+                    <input id="reparto" name="reparto" class="form-control" type="text" value="<?php echo htmlspecialchars($repartopeli) ?>" onchange="valtexto200('reparto')" maxlength="200" required>
                 </div>
                 <div class="form-group">
                     <label for="director">Director</label>
-                    <input id="director" name="director" class="form-control ancho-disquera" type="text" value="<?php echo htmlspecialchars($directorpeli) ?>" maxlength="200" required="">
+                    <input id="director" name="director" class="form-control ancho-disquera" type="text" value="<?php echo htmlspecialchars($directorpeli) ?>" onchange="valtexto200('director')" maxlength="200" required="">
                </div>
                 <div class="form-group">
                     <label for="genero">Género</label>
@@ -77,7 +73,7 @@ if (isset($_POST['submit']))
                </div>
                 <div class="form-group">
                     <label for="descripcion">Descripción</label>
-                    <textarea id="descripcion" name="descripcion" class="form-control altura-desc"  maxlength="16,777,215" required><?php echo htmlspecialchars($descripcionpeli) ?></textarea>
+                    <textarea id="descripcion" name="descripcion" class="form-control altura-desc"  maxlength="16,777,215" onchange="valDesc('descripcion')" required><?php echo htmlspecialchars($descripcionpeli) ?></textarea>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="imagen">Imagen</label>
@@ -87,6 +83,28 @@ if (isset($_POST['submit']))
         </div>
     </section>
 </main>
+
+<script>
+function valtexto200(idinput){
+  x = document.getElementById(idinput).value;
+  if (validartexto200(x)) {
+    document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+  }else{
+    document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+  }
+}
+
+function valDesc(idinput){
+  x = document.getElementById(idinput).value;
+  if (validardesc(x)) {
+    document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+  }else{
+    document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+  }
+}
+</script>
+
+
 
 <?php
 ob_end_flush();

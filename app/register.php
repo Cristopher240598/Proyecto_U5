@@ -70,7 +70,7 @@ if (isset($_POST['submit']))
             <form class="formulario" action="register.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input class="form-control" type="text" name="nombre" id="nombre" autofocus maxlength="50" required>
+                    <input class="form-control" type="text" name="nombre" id="nombre" autofocus onchange="valtexto50('nombre')" maxlength="50" required>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="imagen">Imagen</label>
@@ -81,17 +81,50 @@ if (isset($_POST['submit']))
                 </div>
                 <div class="form-group">
                     <label for="usuario">Correo electrónico</label>
-                    <input class="form-control item" type="email" name="usuario" id="usuario" autofocus maxlength="150" required>
+                    <input class="form-control item" type="email" name="usuario" id="usuario" autofocus onchange="valemail('usuario')" maxlength="150" required>
                 </div>
                 <div class="form-group">
                     <label for="contrasenia">Contraseña</label>
-                    <input class="form-control" type="password" name="contrasenia" id="contrasenia" autofocus="" maxlength="255" required>
+                    <input class="form-control" type="password" name="contrasenia" id="contrasenia" onchange="valtexto255('contrasenia')" autofocus="" maxlength="255" required>
                 </div>
                 <input class="btn btn-info btn-block" type="submit" name="submit" value="Registrarse">
             </form>
         </div>
     </section>
 </main>
+
+<script>
+
+      function valemail(idinput){
+        x = document.getElementById(idinput).value;
+        if (validaremail(x)) {
+          document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+        }else{
+          document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+        }
+      }
+
+      function valtexto255(idinput){
+        x = document.getElementById(idinput).value;
+        if (validartexto200(x)) {
+          document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+        }else{
+          document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+        }
+      }
+
+      function valtexto50(idinput){
+        x = document.getElementById(idinput).value;
+        if (validartexto50(x)) {
+          document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+        }else{
+          document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+        }
+      }
+
+
+
+</script>
 
 <?php
 ob_end_flush();
