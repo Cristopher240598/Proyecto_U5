@@ -77,7 +77,7 @@ if (isset($_POST['submit']))
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="imagen">Imagen</label>
-                    <input id="imagen" name="imagen" type="file" value="<?php echo htmlspecialchars($filename) ?>" accept="image/" required>
+                    <input id="imagen" name="imagen" type="file" value="<?php echo htmlspecialchars($filename) ?>" accept="image/*" required>
                 </div>
            </form>
         </div>
