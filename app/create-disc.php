@@ -1,9 +1,13 @@
 <?php
 ob_start();
 require_once './includes/nav-login.php';
+$sql2 = "SELECT * FROM temas_discos";
+$resultSet = mysqli_query($conn, $sql2);
+$temas = mysqli_fetch_all($resultSet, MYSQLI_ASSOC);
+mysqli_free_result($resultSet);
+mysqli_close($conn);
 
-if (isset($_POST['submit']))
-{
+if (isset($_POST['submit'])) {
     $título = mysqli_real_escape_string($conn, $_POST['titulo']);
     $artista = mysqli_real_escape_string($conn, $_POST['artista']);
     $disquera = mysqli_real_escape_string($conn, $_POST['disquera']);
@@ -11,16 +15,13 @@ if (isset($_POST['submit']))
     $genero = mysqli_real_escape_string($conn, $_POST['genero']);
     $descripcion = mysqli_real_escape_string($conn, $_POST['descripcion']);
     //Guardar la imagen
-    if (isset($_FILES['imagen']))
-    {
+    if (isset($_FILES['imagen'])) {
         $file = $_FILES['imagen'];
         $filename = $file['name'];
         $mimetype = $file['type'];
         if ($mimetype == "image/jpg" || $mimetype == 'image/jpeg' ||
-                $mimetype == 'image/png' || $mimetype == 'image/gif')
-        {
-            if (!is_dir('imagenesDiscos'))
-            {
+                $mimetype == 'image/png' || $mimetype == 'image/gif') {
+            if (!is_dir('imagenesDiscos')) {
                 mkdir('imagenesDiscos', 0777, TRUE);
             }
             move_uploaded_file($file['tmp_name'], 'imagenesDiscos/' . $filename);
@@ -28,11 +29,9 @@ if (isset($_POST['submit']))
     }
     $sql = "INSERT INTO audifonos(id_temaDisco, titulo, artista, disquera, numeroCanciones, imagen, descripcion) "
             . "VALUES('$genero', '$título', '$artista', '$disquera', '$canciones', '$filename', '$descripcion')";
-    if (mysqli_query($conn, $sql))
-    {
+    if (mysqli_query($conn, $sql)) {
         header('Location: read-discs.php');
-    } else
-    {
+    } else {
         echo 'Error al insertar en discos, verifique query: ' . mysqli_error($conn);
     }
 }
@@ -64,14 +63,14 @@ if (isset($_POST['submit']))
                 <div class="form-group">
                     <label for="genero">Género*</label>
                     <select class="form-control ancho-genero" name="genero" id="genero" required="true">
+
                         <optgroup label="Géneros musicales">
-                            <option value="1">Rock</option>
-                            <option value="2">Pop</option>
-                            <option value="3">Electrónica</option>
-                            <option value="4">Banda/Regional Mexicano</option>
-                            <option value="5">Metal</option>
-                            <option value="6">Opera</option>
-                            <option value="7">Ritmos latinos</option>
+                            <?php
+                            foreach ($temas as $items) {
+                                ?>
+                            <option value="<?php echo htmlspecialchars($items['id']); ?>"><?php echo htmlspecialchars($items['genero']); ?></option>
+                            <?php }
+                            ?>
                         </optgroup>
                     </select>
                 </div>

@@ -20,7 +20,7 @@ if (isset($_POST['submit']) && isset($_GET['id']))
         header('Location: movie-genre.php');
     } else
     {
-        echo 'Error al actualizar en temas discos, verifique query: ' . mysqli_error($conn);
+        echo 'Error al actualizar en temas peliculas, verifique query: ' . mysqli_error($conn);
     }
 }
 mysqli_close($conn);

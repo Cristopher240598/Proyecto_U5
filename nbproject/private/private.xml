@@ -12,8 +12,12 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ezker/Proyecto_U5/app/includes/header.php</file>
-            <file>file:/C:/Users/ezker/Proyecto_U5/app/create-disc.php</file>
+            <file>file:/C:/xampp/htdocs/Proyecto_U5/app/music-genre.php</file>
+            <file>file:/C:/xampp/htdocs/Proyecto_U5/app/create-movie.php</file>
+            <file>file:/C:/xampp/htdocs/Proyecto_U5/app/update-music-genre.php</file>
+            <file>file:/C:/xampp/htdocs/Proyecto_U5/app/create-disc.php</file>
+            <file>file:/C:/xampp/htdocs/Proyecto_U5/app/movie-genre.php</file>
+            <file>file:/C:/xampp/htdocs/Proyecto_U5/app/update-movie-genre.php</file>
         </group>
     </open-files>
 </project-private>

@@ -1,6 +1,11 @@
 <?php
 ob_start();
 require_once './includes/nav-login.php';
+$sql2 = "SELECT * FROM temas_peliculas";
+$resultSet = mysqli_query($conn, $sql2);
+$temas = mysqli_fetch_all($resultSet, MYSQLI_ASSOC);
+mysqli_free_result($resultSet);
+mysqli_close($conn);
 ?>
 
 <main class="principal principal-1">
@@ -23,10 +28,16 @@ require_once './includes/nav-login.php';
                     <input class="form-control ancho-disquera" type="text">
                 </div>
                 <div class="form-group">
-                    <label for="">Género</label>
-                    <select class="form-control ancho-genero">
-                        <optgroup label="Género">
-                            <option value="1" selected="">Acción</option>
+                    <label for="genero">Género*</label>
+                    <select class="form-control ancho-genero" name="genero" id="genero" required="true">
+
+                        <optgroup label="Géneros musicales">
+                            <?php
+                            foreach ($temas as $items) {
+                                ?>
+                            <option value="<?php echo htmlspecialchars($items['id']); ?>"><?php echo htmlspecialchars($items['genero']); ?></option>
+                            <?php }
+                            ?>
                         </optgroup>
                     </select>
                 </div>
