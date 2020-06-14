@@ -57,7 +57,7 @@ if (isset($_POST['submit']))
                 <div class="form-group d-flex justify-content-center">
                     <img class="ancho-imagen" src="" id="imagenSalida">
                 </div>
-                <div>
+                <div class="form-group">
                     <label for="">Descripción</label>
                     <textarea class="form-control altura-desc" name="descripcion" id="descripcion" autofocus="" maxlength="16,777,215" required></textarea>
                 </div>
