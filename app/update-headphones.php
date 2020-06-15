@@ -82,11 +82,11 @@ mysqli_close($conn);
                 </div>
                 <div class="form-group">
                     <label for="">Descripción</label>
-                    <textarea class="form-control altura-desc" name="descripcion" id="descripcion" autofocus onchange="valDesc('descripcion')" maxlength="16,777,215" required><?php echo htmlspecialchars($audifonos['descripcion']); ?></textarea>
+                    <textarea class="form-control altura-desc" name="descripcion" id="descripcion" autofocus onchange="valDesc('descripcion')" required><?php echo htmlspecialchars($audifonos['descripcion']); ?></textarea>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="">Imagen</label>
-                    <input type="file" name="imagen" id="imagen" autofocus accept="image/*" required>
+                    <input type="file" name="imagen" id="imagen" autofocus accept="image/*">
                 </div>
                 <div class="form-group d-flex justify-content-center">
                     <img class="ancho-imagen" id="imagenSalida" src="<?= $base ?>imagenesAudifonos/<?php echo htmlspecialchars($audifonos['imagen']); ?>">
