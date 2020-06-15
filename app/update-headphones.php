@@ -66,7 +66,6 @@ mysqli_close($conn);
             <form class="formulario" action="update-headphones.php?id=<?php echo $audifonos['id'] ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="">Marca</label>
-<<<<<<< HEAD
                     <input class="form-control ancho-marca" type="text" name="marca" id="marca" value="<?php echo htmlspecialchars($audifonos['marca']); ?>" autofocus onchange="valtexto200('marca')" maxlength="200" required>
                 </div>
                 <div class="form-group">
@@ -87,30 +86,7 @@ mysqli_close($conn);
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="">Imagen</label>
-                    <input type="file" name="imagen" id="imagen" autofocus accept="image/*" required>
-=======
-                    <input class="form-control ancho-marca" type="text" name="marca" id="marca" value="<?php echo htmlspecialchars($audifonos['marca']); ?>" autofocus maxlength="200" required>
-                </div>
-                <div class="form-group">
-                    <label for="">Modelo</label>
-                    <input class="form-control ancho-artista" type="text" name="modelo" id="modelo" value="<?php echo htmlspecialchars($audifonos['modelo']); ?>" autofocus maxlength="200" required>
-                </div>
-                <div class="form-group">
-                    <label for="">Potencia máxima (mW)</label>
-                    <input class="form-control ancho-disquera" type="number" name="potencia" id="potencia" value="<?php echo htmlspecialchars($audifonos['potenciaMaxima']); ?>" autofocus max="99999" min="1" required>
-                </div>
-                <div class="form-group">
-                    <label for="">Peso (gr)</label>
-                    <input class="form-control ancho-peso" type="number" name="peso" id="peso" value="<?php echo htmlspecialchars($audifonos['peso']); ?>" autofocus max="9999" min="1" required>
-                </div>
-                <div class="form-group">
-                    <label for="">Descripción</label>
-                    <textarea class="form-control altura-desc" name="descripcion" id="descripcion" autofocus maxlength="16,777,215" required><?php echo htmlspecialchars($audifonos['descripcion']); ?></textarea>
-                </div>
-                <div class="form-group d-flex flex-column">
-                    <label for="">Imagen</label>
-                    <input type="file" name="imagen" id="imagen" autofocus accept="image/" required>
->>>>>>> 60c2690d375b05f5f3a51849e624d6ed65ef2739
+                    <input type="file" name="imagen" id="imagen" autofocus accept="image/*">
                 </div>
                 <div class="form-group d-flex justify-content-center">
                     <img class="ancho-imagen" id="imagenSalida" src="<?= $base ?>imagenesAudifonos/<?php echo htmlspecialchars($audifonos['imagen']); ?>">

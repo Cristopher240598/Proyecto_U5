@@ -46,7 +46,6 @@ if (isset($_POST['submit']))
             </div>
             <form class="formulario" method="POST" action="create-disc.php" enctype="multipart/form-data">
                 <div class="form-group">
-<<<<<<< HEAD
                     <label for="">Título*</label>
                     <input class="form-control" name="titulo" id="titulo" onchange="valtexto200('titulo')" maxlength="200" type="text" required>
                 </div>
@@ -61,22 +60,6 @@ if (isset($_POST['submit']))
                 <div class="form-group">
                     <label for="">Número de canciones*</label>
                     <input class="form-control ancho-canciones" type="number" name="canciones" onchange="valNumCanciones('canciones')" id="canciones" maxlength="200" required>
-=======
-                    <label for="">Título</label>
-                    <input class="form-control" type="text" maxlength="200" required>
-                </div>
-                <div class="form-group">
-                    <label for="">Artista</label>
-                    <input class="form-control ancho-artista" type="text" maxlength="200" required>
-                </div>
-                <div class="form-group">
-                    <label for="">Disquera</label>
-                    <input class="form-control ancho-disquera" type="text" maxlength="200" required>
-                </div>
-                <div class="form-group">
-                    <label for="">Número de canciones</label>
-                    <input class="form-control ancho-canciones" type="number" min="1" max="99" required>
->>>>>>> 60c2690d375b05f5f3a51849e624d6ed65ef2739
                 </div>
                 <div class="form-group">
                     <label for="genero">Género*</label>
@@ -93,21 +76,12 @@ if (isset($_POST['submit']))
                     </select>
                 </div>
                 <div class="form-group">
-<<<<<<< HEAD
                     <label for="descripcion">Descripción*</label>
                     <textarea name="descripcion" id="descripcion" class="form-control altura-desc" rows="4" cols="50" onchange="valDesc('descripcion')" style="resize: none" maxlength="16,777,215" required="true"></textarea>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="">Imagen*</label>
                     <input type="file" name="imagen" id="imagen" required="true" autofocus>
-=======
-                    <label for="">Descripción</label>
-                    <textarea class="form-control altura-desc" maxlength="16,777,215" required></textarea>
-                </div>
-                <div class="form-group d-flex flex-column">
-                    <label for="">Imagen</label>
-                    <input type="file" required>
->>>>>>> 60c2690d375b05f5f3a51849e624d6ed65ef2739
                 </div>
                 <div class="form-group d-flex justify-content-center">
                     <img class="ancho-imagen" src="" id="imagenSalida">

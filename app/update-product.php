@@ -64,7 +64,6 @@ mysqli_close($conn);
             <form class="formulario" action="update-product.php?id=<?php echo $productos['id'] ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="">Nombre</label>
-<<<<<<< HEAD
                     <input class="form-control ancho-marca" type="text" name="nombre" id="nombre" value="<?php echo htmlspecialchars($productos['nombre']); ?>" autofocus onchange="valtexto200('nombre')" maxlength="200" required>
                 </div>
                 <div class="form-group">
@@ -73,29 +72,14 @@ mysqli_close($conn);
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="">Imagen</label>
-                    <input type="file" name="imagen" id="imagen" autofocus accept="image/*" required>
-=======
-                    <input class="form-control ancho-marca" type="text" name="nombre" id="nombre" value="<?php echo htmlspecialchars($productos['nombre']); ?>" autofocus maxlength="200" required>
-                </div>
-                <div class="form-group">
-                    <label for="">Marca</label>
-                    <input class="form-control ancho-artista" type="text" name="marca" id="marca" value="<?php echo htmlspecialchars($productos['marca']); ?>" autofocus maxlength="200" required>
-                </div>
-                <div class="form-group d-flex flex-column">
-                    <label for="">Imagen</label>
-                    <input type="file" name="imagen" id="imagen" autofocus accept="image/" required>
->>>>>>> 60c2690d375b05f5f3a51849e624d6ed65ef2739
+                    <input type="file" name="imagen" id="imagen" autofocus accept="image/*">
                 </div>
                 <div class="form-group d-flex justify-content-center">
                     <img class="ancho-imagen" id="imagenSalida" src="<?= $base ?>imagenesProductos/<?php echo htmlspecialchars($productos['imagen']); ?>">
                 </div>
                 <div class="form-group">
                     <label for="">Descripción</label>
-<<<<<<< HEAD
                     <textarea class="form-control altura-desc" name="descripcion" id="descripcion" autofocus maxlength="16,777,215" onchange="valDesc('descripcion')" required><?php echo htmlspecialchars($productos['descripcion']); ?></textarea>
-=======
-                    <textarea class="form-control altura-desc" name="descripcion" id="descripcion" autofocus maxlength="16,777,215" required><?php echo htmlspecialchars($productos['descripcion']); ?></textarea>
->>>>>>> 60c2690d375b05f5f3a51849e624d6ed65ef2739
                 </div>
 
                 <input class="btn btn-info btn-block" type="submit" name="submit" value="Guardar cambios">
