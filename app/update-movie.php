@@ -4,15 +4,17 @@ require_once './includes/nav-login.php';
 
 if (isset($_GET['id']))
 {
-    $id = mysqli_real_escape_string($conn, $_GET['id']);
-    $sql = "'SELECT * FROM peliculas p "
-            . "INNER JOIN temas_peliculas tp"
-            . " ON p.id_temaPelicula = tp.id "
-            . " WHERE id = $id";
-    $result = mysqli_query($conn, $sql);
-    $peliculas = mysqli_fetch_assoc($result);
+    
+    $sql = "SELECT * FROM peliculas WHERE id = $id";
+    $resultado = mysqli_query($conn, $sql);
+    $peliculas = mysqli_fetch_assoc($resultado);
     $imagenPelicula = $peliculas['imagen'];
-    mysqli_free_result($result);
+    mysqli_free_result($resultado);
+
+    $sql2 = 'SELECT * FROM temas_peliculas ORDER BY genero';
+    $resultado = mysqli_query($conn, $sql2);
+    $genPeliculas = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+    mysqli_free_result($resultado);
 }
 
 if (isset($_POST['submit']) && isset($_GET['id']))
@@ -39,12 +41,12 @@ if (isset($_POST['submit']) && isset($_GET['id']))
             }
             move_uploaded_file($file['tmp_name'], 'imagenesPeliculas/' . $filename);
         }
-        $sql = "UPDATE peliculas SET id_temaPelicula = '$categoriapeli', titulo = '$titulopeli', "
+        $sql = "UPDATE peliculas SET id_temaPelicula = $generopeli, titulo = '$titulopeli', "
                 . "reparto = '$repartopeli', director = '$directorpeli', imagen = '$filename', descripcion = '$descripcion' "
                 . "WHERE id = $id";
     } else
     {
-         $sql = "UPDATE peliculas SET id_temaPelicula = '$categoriapeli', titulo = '$titulopeli', "
+         $sql = "UPDATE peliculas SET id_temaPelicula = $generopeli, titulo = '$titulopeli', "
                 . "reparto = '$repartopeli', director = '$directorpeli', descripcion = '$descripcion' "
                 . "WHERE id = $id";
     }
@@ -81,16 +83,15 @@ mysqli_close($conn);
                 </div>
                 <div class="form-group">
                     <label>Género</label>
-                    <select class="form-control ancho-genero" name="genero" id="genero" value="<?php echo htmlspecialchars($peliculas['genero']); ?>" autofocus>
-                        <option value=" ">--Seleccionar--</option>
-                         <?php 
-                         $sql= 'SELECT * FROM temas_peliculas';
-                         $result= mysqli_query($conn, $sql);
-
-                          while($categorias = mysqli_fetch_array($result)) 
-                          echo "<option  value='".$categorias["id"]."'>".$categorias["genero"]."</option>"; 
-
-                             ?>
+                    <select class="form-control ancho-genero" name="genero" id="genero" autofocus required>
+                        <optgroup label="Género">
+                            <?php foreach ($genPeliculas as $gen) { ?>
+                                <?php if($gen['id'] == $peliculas['id_temaPelicula']) {?>
+                                    <option value="<?php echo htmlspecialchars($gen['id']); ?>" selected><?php echo htmlspecialchars($gen['genero']); ?></option>
+                                <?php }?>
+                                <option value="<?php echo htmlspecialchars($gen['id']); ?>"><?php echo htmlspecialchars($gen['genero']); ?></option>
+                            <?php } ?>
+                        </optgroup>
                     </select>
                 </div>
                 <div class="form-group">
@@ -99,10 +100,10 @@ mysqli_close($conn);
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label>Imagen</label>
-                    <input type="file" id="imagen" name="imagen">
+                     <input type="file" id="imagen" name="imagen" accept="image/*">
                 </div>
                 <div class="form-group d-flex justify-content-center">
-                    <img class="ancho-imagen"  id="imagenSalida" src="<?= $base ?>imagenesAudifonos/<?php echo htmlspecialchars($peliculas['imagen']); ?>">
+                    <img class="ancho-imagen"  id="imagenSalida" src="<?= $base ?>imagenesPeliculas/<?php echo htmlspecialchars($peliculas['imagen']); ?>">
                 </div>
                 <input class="btn btn-info btn-block" type="submit" name="submit" value="Guardar cambios">
             </form>
