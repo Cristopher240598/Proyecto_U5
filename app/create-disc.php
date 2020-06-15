@@ -32,8 +32,8 @@ if (isset($_POST['submit']))
             move_uploaded_file($file['tmp_name'], 'imagenesDiscos/' . $filename);
         }
     }
-    $sql = "INSERT INTO audifonos(id_temaDisco, titulo, artista, disquera, numeroCanciones, imagen, descripcion) "
-            . "VALUES('$genero', '$título', '$artista', '$disquera', '$canciones', '$filename', '$descripcion')";
+    $sql = "INSERT INTO discos(id_temaDisco, titulo, artista, disquera, numeroCanciones, imagen, descripcion) "
+            . "VALUES($genero, '$título', '$artista', '$disquera', $canciones, '$filename', '$descripcion')";
     if (mysqli_query($conn, $sql))
     {
         header('Location: read-discs.php');

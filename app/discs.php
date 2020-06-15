@@ -33,7 +33,7 @@ mysqli_close($conn);
                                     <p class="tamanio-subtitulo-col"><?php echo htmlspecialchars($disco['artista']); ?></p>
                                 </div>
                                 <div class="text-center product-name">
-                                    <a class="btn btn-info btn-color" role="button" href="comment-discs.php.php?id=<?php echo $disco['id'] ?>">Ver</a>
+                                    <a class="btn btn-info btn-color" role="button" href="comment-discs.php?id=<?php echo $disco['id'] ?>">Ver</a>
                                 </div>
                             </div>
                         </div>

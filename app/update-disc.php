@@ -10,6 +10,11 @@ if (isset($_GET['id']))
     $discos = mysqli_fetch_assoc($resultado);
     $imagenDiscos = $discos['imagen'];
     mysqli_free_result($resultado);
+    
+    $sql2 = 'SELECT * FROM temas_discos ORDER BY genero';
+    $resultado = mysqli_query($conn, $sql2);
+    $genMusica = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+    mysqli_free_result($resultado);
 }
 
 if (isset($_POST['submit']) && isset($_GET['id']))
@@ -37,13 +42,13 @@ if (isset($_POST['submit']) && isset($_GET['id']))
             }
             move_uploaded_file($file['tmp_name'], 'imagenesDiscos/' . $filename);
         }
-        $sql = "UPDATE discos SET id_temaDisco = '$genero', titulo = '$título', artista = '$artista', "
-                . "disquera = $disquera, numeroCanciones = $canciones, imagen = '$filename', descripcion = '$descripcion' "
+        $sql = "UPDATE discos SET id_temaDisco = $genero, titulo = '$título', artista = '$artista', "
+                . "disquera = '$disquera', numeroCanciones = $canciones, imagen = '$filename', descripcion = '$descripcion' "
                 . "WHERE id = $id";
     } else
     {
-        $sql = "UPDATE discos SET id_temaDisco = '$genero', titulo = '$título', artista = '$artista', "
-                . "disquera = $disquera, numeroCanciones = '$canciones', descripcion = '$descripcion' "
+        $sql = "UPDATE discos SET id_temaDisco = $genero, titulo = '$título', artista = '$artista', "
+                . "disquera = '$disquera', numeroCanciones = $canciones, descripcion = '$descripcion' "
                 . "WHERE id = $id";
     }
     if (mysqli_query($conn, $sql))
@@ -85,14 +90,13 @@ mysqli_close($conn);
                     <label for="genero">Género</label>
                     <select class="form-control ancho-genero" name="genero" id="genero" required="true">
                         <optgroup label="Géneros musicales">
-                            <?php
-                            $sqlGeneros = $mysqli->query("SELECT * FROM temas_discos");
-                            while ($discosG = mysqli_fetch_array($sqlGeneros))
-                            {
-                                ?>
-                            <option value="<?php echo htmlspecialchars($discosG['id']); ?>"> <?php echo htmlspecialchars($discosG['genero']); ?> </option>
-                           <?php }
-                                ?>
+                            <?php foreach ($genMusica as $gen) { ?>
+                                <?php if($gen['id'] == $discos['id_temaDisco']) {?>
+                                    <option value="<?php echo htmlspecialchars($gen['id']); ?>" selected><?php echo htmlspecialchars($gen['genero']); ?></option>
+                                <?php } else {?>
+                                    <option value="<?php echo htmlspecialchars($gen['id']); ?>"><?php echo htmlspecialchars($gen['genero']); ?></option>
+                                <?php } ?>
+                            <?php } ?>
                         </optgroup>
                     </select>
                 </div>

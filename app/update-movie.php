@@ -88,8 +88,9 @@ mysqli_close($conn);
                             <?php foreach ($genPeliculas as $gen) { ?>
                                 <?php if($gen['id'] == $peliculas['id_temaPelicula']) {?>
                                     <option value="<?php echo htmlspecialchars($gen['id']); ?>" selected><?php echo htmlspecialchars($gen['genero']); ?></option>
-                                <?php }?>
-                                <option value="<?php echo htmlspecialchars($gen['id']); ?>"><?php echo htmlspecialchars($gen['genero']); ?></option>
+                                <?php } else {?>
+                                    <option value="<?php echo htmlspecialchars($gen['id']); ?>"><?php echo htmlspecialchars($gen['genero']); ?></option>
+                                <?php } ?>
                             <?php } ?>
                         </optgroup>
                     </select>

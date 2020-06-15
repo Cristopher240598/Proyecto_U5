@@ -51,14 +51,10 @@ mysqli_close($conn);
                                 </div>
                                 <div class="text-center product-name margen-txt-col">
                                     <h2 class="text-info tamanio-titulo-col"><?php echo htmlspecialchars($disco['titulo']); ?></h2>
-                                    <p class="tamanio-subtitulo-col"><?php echo htmlspecialchars($audifono['artista']); ?></p>
+                                    <p class="tamanio-subtitulo-col"><?php echo htmlspecialchars($disco['artista']); ?></p>
                                 </div>
                                 <div class="text-center product-name">
-                                    <a class="btn btn-danger btn-color" onclick="alerta()" role="button" href="delete-disc.php?id=<?php echo $audifono['id'] ?>">Eliminar</a>
-                                </div>
-                                <div class="text-center product-name">
-                                    <a class="btn btn-secondary" role="button" href="index.php">Eliminar</a>
-                                    <p id="txtmensaje"></p>
+                                    <a class="btn btn-danger btn-color" onclick="alerta()" role="button" href="delete-disc.php?id=<?php echo $disco['id'] ?>">Eliminar</a>
                                 </div>
                             </div>
                         </div>

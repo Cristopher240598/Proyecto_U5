@@ -23,7 +23,7 @@ if (isset($_GET['id']))
     
     $resComD = mysqli_query($conn, $sqlComD);
     
-    $comentriosAu = mysqli_fetch_all($resComD, MYSQLI_ASSOC);
+    $comentariosDis = mysqli_fetch_all($resComD, MYSQLI_ASSOC);
     
     mysqli_free_result($resComD);
 }
@@ -82,7 +82,7 @@ if (isset($_POST['submit']) && isset($_GET['id']))
             <div class="text-center block-heading margen-titulo-com">
                 <h2 class="text-left text-info" style="font-size: 30px;">Comentarios</h2>
             </div>
-            <?php foreach ($comentariosD as $comentarioD){ ?>
+            <?php foreach ($comentariosDis as $comentarioD){ ?>
                 <div class="text-center block-heading">
                     <p class="text-left tamanio-usuario-com">
                         <img class="rounded-circle com-usuario" src="<?= $base ?>imagenesUsuario/<?php echo htmlspecialchars($comentarioD['imagen']); ?>"><?php echo htmlspecialchars($comentarioD['nombre']) ?>
