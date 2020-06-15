@@ -80,7 +80,7 @@ if (isset($_POST['submit']))
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Descripción*</label>
-                    <textarea name="descripcion" id="descripcion" class="form-control altura-desc" rows="4" cols="50" style="resize: none" onchange="valDesc('descripcion')" maxlength="16,777,215" required></textarea>
+                    <textarea name="descripcion" id="descripcion" class="form-control altura-desc" rows="4" cols="50" style="resize: none" onchange="valDesc('descripcion')" required></textarea>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="">Imagen*</label>
