@@ -97,7 +97,7 @@ mysqli_close($conn);
                 </div>
                 <div class="form-group">
                     <label>Descripción</label>
-                    <textarea class="form-control altura-desc" id="descripcion" name="descripcion"  onchange="valDesc('descripcion')" maxlength="16,777,215" autofocus required><?php echo htmlspecialchars($peliculas['descripcion']); ?></textarea>
+                    <textarea class="form-control altura-desc" id="descripcion" name="descripcion"  onchange="valDesc('descripcion')" required><?php echo htmlspecialchars($peliculas['descripcion']); ?></textarea>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label>Imagen</label>
