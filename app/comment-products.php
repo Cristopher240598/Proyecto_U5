@@ -83,7 +83,7 @@ if (isset($_POST['submit']) && isset($_GET['id']))
             <div class="text-center block-heading">
                 <form class="formulario ancho-form" action="comment-products.php?id=<?php echo $productos['id'] ?>" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <textarea class="form-control alt-form-com" name="comentario" id="comentario" autofocus></textarea>
+                        <textarea class="form-control alt-form-com" name="comentario" id="comentario" maxlength="16,777,215" onchange="valDesc('comentario')" autofocus></textarea>
                     </div>
                     <input class="btn btn-info btn-block ancho-btn-com" type="submit" name="submit" value="Comentar">
                 </form>
@@ -91,6 +91,19 @@ if (isset($_POST['submit']) && isset($_GET['id']))
         </div>
     </section>
 </main>
+<script>
+    function valDesc(idinput)
+    {
+        x = document.getElementById(idinput).value;
+        if (validardesc(x))
+        {
+            document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+        } else
+        {
+            document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+        }
+    }
+</script>
 
 <?php
 ob_end_flush();

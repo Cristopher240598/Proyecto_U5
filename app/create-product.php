@@ -44,30 +44,54 @@ if (isset($_POST['submit']))
             <form class="formulario" action="create-product.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="">Nombre</label>
-                    <input class="form-control ancho-artista" type="text" name="nombre" id="nombre" autofocus="" maxlength="200" required>
+                    <input class="form-control ancho-artista" type="text" name="nombre" id="nombre" autofocus onchange="valtexto200('nombre')" maxlength="200" required>
                 </div>
                 <div class="form-group">
                     <label for="">Marca</label>
-                    <input class="form-control ancho-marca" type="text" name="marca" id="marca" autofocus="" maxlength="200" required>
+                    <input class="form-control ancho-marca" type="text" name="marca" id="marca" autofocus onchange="valtexto200('marca')" maxlength="200" required>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="">Imagen</label>
                     <input type="file" name="imagen" id="imagen" autofocus accept="image/*" required>
                 </div>
-                
+
                 <div class="form-group d-flex justify-content-center">
                     <img class="ancho-imagen" src="" id="imagenSalida">
                 </div>
                 <div class="form-group">
                     <label for="">Descripción</label>
-                    <textarea class="form-control altura-desc" name="descripcion" id="descripcion" autofocus="" maxlength="16,777,215" required></textarea>
-                </div>
-                
+                    <textarea class="form-control altura-desc" name="descripcion" id="descripcion" autofocus onchange="valDesc('descripcion')" maxlength="16,777,215" required></textarea>
+                </div>           
                 <input class="btn btn-info btn-block" type="submit" name="submit" value="Crear">
             </form>
         </div>
     </section>
 </main>
+<script>
+    function valtexto200(idinput)
+    {
+        x = document.getElementById(idinput).value;
+        if (validartexto200(x))
+        {
+            document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+        } else
+        {
+            document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+        }
+    }
+
+    function valDesc(idinput)
+    {
+        x = document.getElementById(idinput).value;
+        if (validardesc(x))
+        {
+            document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+        } else
+        {
+            document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+        }
+    }
+</script>
 
 <?php
 ob_end_flush();

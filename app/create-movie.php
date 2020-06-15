@@ -52,33 +52,33 @@ mysqli_close($conn);
             <form class="formulario" enctype="multipart/form-data" action="create-movie.php" method="POST">
                 <div class="form-group">
                     <label for="titulo">Título</label>
-                    <input id="titulo" name="titulo" class="form-control" type="text" autofocus="autofocus" maxlength="200" required>
+                    <input id="titulo" name="titulo" class="form-control" type="text" autofocus onchange="valtexto200('titulo')" maxlength="200" required>
                 </div>
                 <div class="form-group">
                     <label for="reparto">Reparto</label>
-                    <input id="reparto" name="reparto" class="form-control" type="text" maxlength="200" required>
+                    <input id="reparto" name="reparto" class="form-control" type="text" maxlength="200" onchange="valtexto200('reparto')" autofocus required>
                 </div>
                 <div class="form-group">
                     <label for="director">Director</label>
-                    <input id="director" name="director" class="form-control ancho-disquera" type="text"  maxlength="200" required="">
+                    <input id="director" name="director" class="form-control ancho-disquera" type="text" onchange="valtexto200('director')" maxlength="200" autofocus required>
                 </div>
                 <div class="form-group">
                     <label for="genero">Género</label>
                     <select id="genero" name="genero" class="form-control ancho-genero" required>
                         <optgroup label="Género">
                             <?php foreach ($peliculas as $pelicula) { ?>
-                            <option value="<?php echo htmlspecialchars($pelicula['id']); ?>"><?php echo htmlspecialchars($pelicula['genero']); ?></option>
+                                <option value="<?php echo htmlspecialchars($pelicula['id']); ?>"><?php echo htmlspecialchars($pelicula['genero']); ?></option>
                             <?php } ?>
                         </optgroup>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Descripción</label>
-                    <textarea id="descripcion" name="descripcion" class="form-control altura-desc"  maxlength="16,777,215" required></textarea>
+                    <textarea id="descripcion" name="descripcion" class="form-control altura-desc" onchange="valDesc('descripcion')" maxlength="16,777,215" autofocus required></textarea>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="imagen">Imagen</label>
-                    <input id="imagen" name="imagen" type="file"  accept="image/*" required>
+                    <input id="imagen" name="imagen" type="file"  accept="image/*" autofocus required>
                 </div>
                 <div class="form-group d-flex justify-content-center">
                     <img class="ancho-imagen" src="" id="imagenSalida">
@@ -88,6 +88,31 @@ mysqli_close($conn);
         </div>
     </section>
 </main>
+<script>
+    function valtexto200(idinput)
+    {
+        x = document.getElementById(idinput).value;
+        if (validartexto200(x))
+        {
+            document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+        } else
+        {
+            document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+        }
+    }
+
+    function valDesc(idinput)
+    {
+        x = document.getElementById(idinput).value;
+        if (validardesc(x))
+        {
+            document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+        } else
+        {
+            document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+        }
+    }
+</script>
 
 <?php
 ob_end_flush();

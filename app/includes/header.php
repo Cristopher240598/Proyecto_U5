@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
         <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
         <link rel="stylesheet" href="assets/css/styles.css">
+        <script src="assets/js/validaciones.js"></script>
     </head>
     <body>
 <?php

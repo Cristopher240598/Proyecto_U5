@@ -72,19 +72,19 @@ mysqli_close($conn);
             <form class="formulario" action="update-disc.php?id=<?php echo $discos['id'] ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="">Título</label>
-                    <input class="form-control ancho-marca" type="text" name="titulo" id="titulo" value="<?php echo htmlspecialchars($discos['titulo']); ?>" maxlength="200" required autofocus>
+                    <input class="form-control ancho-marca" type="text" name="titulo" id="titulo" value="<?php echo htmlspecialchars($discos['titulo']); ?>" onchange="valtexto200('titulo')" maxlength="200" required autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Artista</label>
-                    <input class="form-control ancho-artista" type="text" name="artista" id="artista" value="<?php echo htmlspecialchars($discos['artista']); ?>" maxlength="200" required autofocus>
+                    <input class="form-control ancho-artista" type="text" name="artista" id="artista" value="<?php echo htmlspecialchars($discos['artista']); ?>" onchange="valtexto200('artista')" maxlength="200" required autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">Disquera</label>
-                    <input class="form-control ancho-disquera" type="text" name="disquera" id="disquera" value="<?php echo htmlspecialchars($discos['disquera']); ?>" maxlength="200" required autofocus>
+                    <input class="form-control ancho-disquera" type="text" name="disquera" id="disquera" value="<?php echo htmlspecialchars($discos['disquera']); ?>" onchange="valtexto200('disquera')" maxlength="200" required autofocus>
                 </div>
                 <div class="form-group">
                     <label for="">No. Canciones</label>
-                    <input class="form-control ancho-peso" type="number" name="canciones" min="1" max="99" id="canciones" value="<?php echo htmlspecialchars($discos['numeroCanciones']); ?>" autofocus>
+                    <input class="form-control ancho-peso" type="number" name="canciones" min="1" max="99" onchange="valNumCanciones('canciones')" id="canciones" value="<?php echo htmlspecialchars($discos['numeroCanciones']); ?>" required autofocus>
                 </div>
                 <div class="form-group">
                     <label for="genero">Género</label>
@@ -102,7 +102,7 @@ mysqli_close($conn);
                 </div>
                 <div class="form-group">
                     <label for="">Descripción</label>
-                    <textarea class="form-control altura-desc" name="descripcion" id="descripcion" maxlength="16,777,215" required autofocus><?php echo htmlspecialchars($discos['descripcion']); ?></textarea>
+                    <textarea class="form-control altura-desc" name="descripcion" id="descripcion" onchange="valDesc('descripcion')" maxlength="16,777,215" required autofocus><?php echo htmlspecialchars($discos['descripcion']); ?></textarea>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="">Imagen</label>
@@ -116,6 +116,43 @@ mysqli_close($conn);
         </div>
     </section>
 </main>
+<script>
+    function valtexto200(idinput)
+    {
+        x = document.getElementById(idinput).value;
+        if (validartexto200(x))
+        {
+            document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+        } else
+        {
+            document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+        }
+    }
+
+    function valNumCanciones(idinput)
+    {
+        x = document.getElementById(idinput).value;
+        if (validarnumero2(x))
+        {
+            document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+        } else
+        {
+            document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+        }
+    }
+
+    function valDesc(idinput)
+    {
+        x = document.getElementById(idinput).value;
+        if (validardesc(x))
+        {
+            document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+        } else
+        {
+            document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+        }
+    }
+</script>
 
 <?php
 ob_end_flush();

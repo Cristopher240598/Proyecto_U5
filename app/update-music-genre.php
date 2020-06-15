@@ -35,13 +35,26 @@ mysqli_close($conn);
             <form class="formulario" method="POST" action="update-music-genre.php?id=<?php echo $temas['id'] ?>">
                 <div class="form-group">
                     <label for="">Género de película</label>
-                    <input class="form-control" type="text" name="genero" id="genero" value="<?php echo htmlspecialchars($temas['genero']); ?>">
+                    <input class="form-control" type="text" name="genero" id="genero" value="<?php echo htmlspecialchars($temas['genero']); ?>" maxlength="255" onchange="valtexto255('genero')" autofocus required>
                 </div>
                 <input class="btn btn-info btn-block" type="submit" name="submit" value="Guardar cambios">
             </form>
         </div>
     </section>
 </main>
+<script>
+    function valtexto255(idinput)
+    {
+        x = document.getElementById(idinput).value;
+        if (validartexto200(x))
+        {
+            document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+        } else
+        {
+            document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+        }
+    }
+</script>
 
 <?php
 ob_end_flush();
