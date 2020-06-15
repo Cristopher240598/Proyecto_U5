@@ -68,6 +68,7 @@ mysqli_close($conn);
             </div>
             <form class="formulario" enctype="multipart/form-data" action="update-movie.php?id=<?php echo $peliculas['id'] ?>" method="POST">
                 <div class="form-group">
+<<<<<<< HEAD
                     <label>Título</label>
                     <input class="form-control" type="text" name="titulo" id="titulo" value="<?php echo htmlspecialchars($peliculas['titulo']); ?>" autofocus onchange="valtexto200('titulo')" maxlength="200" required>
                 </div>
@@ -100,6 +101,34 @@ mysqli_close($conn);
                 <div class="form-group d-flex flex-column">
                     <label>Imagen</label>
                     <input type="file" id="imagen" name="imagen" accept="image/*" required>
+=======
+                    <label for="">Título</label>
+                    <input class="form-control" type="text" maxlength="200" required>
+                </div>
+                <div class="form-group">
+                    <label for="">Reparto</label>
+                    <input class="form-control" type="text" maxlength="200" required>
+                </div>
+                <div class="form-group">
+                    <label for="">Director</label>
+                    <input class="form-control ancho-disquera" type="text" maxlength="200" required="">
+                </div>
+                <div class="form-group">
+                    <label for="">Género</label>
+                    <select class="form-control ancho-genero" required>
+                        <optgroup label="Género">
+                            <option value="1" selected="">Acción</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Descripción</label>
+                    <textarea class="form-control altura-desc" maxlength="16,777,215" required></textarea>
+                </div>
+                <div class="form-group d-flex flex-column">
+                    <label for="">Imagen</label>
+                    <input type="file" accept="image/" required>
+>>>>>>> 60c2690d375b05f5f3a51849e624d6ed65ef2739
                 </div>
                 <div class="form-group d-flex justify-content-center">
                     <img class="ancho-imagen"  id="imagenSalida" src="<?= $base ?>imagenesAudifonos/<?php echo htmlspecialchars($peliculas['imagen']); ?>">

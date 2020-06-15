@@ -46,6 +46,7 @@ if (isset($_POST['submit']))
             </div>
             <form class="formulario" enctype="multipart/form-data" action="create-movie.php" method="POST">
                 <div class="form-group">
+<<<<<<< HEAD
                     <label for="titulo">Título</label>
                     <input id="titulo" name="titulo" class="form-control" type="text" value="<?php echo htmlspecialchars($titulopeli) ?>" autofocus="autofocus" onchange="valtexto200('titulo')" maxlength="200" required>
                 </div>
@@ -69,15 +70,43 @@ if (isset($_POST['submit']))
                           echo "<option  value='".$categorias["id"]."'>".$categorias["genero"]."</option>";
 
                              ?>
+=======
+                    <label for="">Título</label>
+                    <input class="form-control" type="text" maxlength="200" required>
+                </div>
+                <div class="form-group">
+                    <label for="">Reparto</label>
+                    <input class="form-control" type="text" maxlength="200" required>
+                </div>
+                <div class="form-group">
+                    <label for="">Director</label>
+                    <input class="form-control ancho-disquera" type="text" maxlength="200" required="">
+                </div>
+                <div class="form-group">
+                    <label for="">Género</label>
+                    <select class="form-control ancho-genero" required>
+                        <optgroup label="Género">
+                            <option value="1" selected="">Acción</option>
+                        </optgroup>
+>>>>>>> 60c2690d375b05f5f3a51849e624d6ed65ef2739
                     </select>
                </div>
                 <div class="form-group">
+<<<<<<< HEAD
                     <label for="descripcion">Descripción</label>
                     <textarea id="descripcion" name="descripcion" class="form-control altura-desc"  maxlength="16,777,215" onchange="valDesc('descripcion')" required><?php echo htmlspecialchars($descripcionpeli) ?></textarea>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="imagen">Imagen</label>
                     <input id="imagen" name="imagen" type="file" value="<?php echo htmlspecialchars($filename) ?>" accept="image/*" required>
+=======
+                    <label for="">Descripción</label>
+                    <textarea class="form-control altura-desc" maxlength="16,777,215" required></textarea>
+                </div>
+                <div class="form-group d-flex flex-column">
+                    <label for="">Imagen</label>
+                    <input type="file" accept="image/">
+>>>>>>> 60c2690d375b05f5f3a51849e624d6ed65ef2739
                 </div>
            </form>
         </div>

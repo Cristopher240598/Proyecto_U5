@@ -70,7 +70,11 @@ if (isset($_POST['submit']))
             <form class="formulario" action="register.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
+<<<<<<< HEAD
                     <input class="form-control" type="text" name="nombre" id="nombre" autofocus onchange="valtexto50('nombre')" maxlength="50" required>
+=======
+                    <input class="form-control" type="text" name="nombre" id="nombre" autofocus maxlength="50" required>
+>>>>>>> 60c2690d375b05f5f3a51849e624d6ed65ef2739
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="imagen">Imagen</label>
@@ -81,11 +85,19 @@ if (isset($_POST['submit']))
                 </div>
                 <div class="form-group">
                     <label for="usuario">Correo electrónico</label>
+<<<<<<< HEAD
                     <input class="form-control item" type="email" name="usuario" id="usuario" autofocus onchange="valemail('usuario')" maxlength="150" required>
                 </div>
                 <div class="form-group">
                     <label for="contrasenia">Contraseña</label>
                     <input class="form-control" type="password" name="contrasenia" id="contrasenia" onchange="valtexto255('contrasenia')" autofocus="" maxlength="255" required>
+=======
+                    <input class="form-control item" type="email" name="usuario" id="usuario" autofocus maxlength="150" required="">
+                </div>
+                <div class="form-group">
+                    <label for="contrasenia">Contraseña</label>
+                    <input class="form-control" type="password" name="contrasenia" id="contrasenia" autofocus="" maxlength="255">
+>>>>>>> 60c2690d375b05f5f3a51849e624d6ed65ef2739
                 </div>
                 <input class="btn btn-info btn-block" type="submit" name="submit" value="Registrarse">
             </form>

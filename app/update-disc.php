@@ -36,11 +36,19 @@ require_once './includes/nav-login.php';
                 </div>
                 <div class="form-group">
                     <label for="">Descripción</label>
+<<<<<<< HEAD
                     <textarea class="form-control altura-desc"  maxlength="16,777,215" required></textarea>
                 </div>
                 <div class="form-group d-flex flex-column">
                     <label for="">Imagen</label>
                     <input type="file" accept="image/*" required>
+=======
+                    <textarea class="form-control altura-desc" maxlength="16,777,215" required></textarea>
+                </div>
+                <div class="form-group d-flex flex-column">
+                    <label for="">Imagen</label>
+                    <input type="file" required>
+>>>>>>> 60c2690d375b05f5f3a51849e624d6ed65ef2739
                 </div>
                 <div class="form-group d-flex justify-content-center">
                     <img class="ancho-imagen" src="img/discos.jpg">
