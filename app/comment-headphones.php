@@ -85,7 +85,7 @@ if (isset($_POST['submit']) && isset($_GET['id']))
             <div class="text-center block-heading">
                 <form class="formulario ancho-form" action="comment-headphones.php?id=<?php echo $audifonos['id'] ?>" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <textarea class="form-control alt-form-com" name="comentario" id="comentario" maxlength="16,777,215" onchange="valDesc('comentario')" autofocus></textarea>
+                        <textarea class="form-control alt-form-com" name="comentario" id="comentario" onchange="valDesc('comentario')" autofocus></textarea>
                     </div>
                     <input class="btn btn-info btn-block ancho-btn-com" type="submit" name="submit" value="Comentar">
                 </form>
