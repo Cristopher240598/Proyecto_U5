@@ -5,10 +5,10 @@ require_once './includes/nav-login-user.php';
 if (isset($_GET['id']))
 {
     $id = mysqli_real_escape_string($conn, $_GET['id']);
-    $sql = "SELECT * FROM peliculas p "
-            . "INNER JOIN temas_peliculas tp "
-            . "ON p.id_temaPelicula = tp.id  "
-            . "WHERE id = $id";
+    $sql = "SELECT p.id, p.titulo, p.reparto, p.director, p.imagen, p.descripcion, tp.genero "
+            . "FROM peliculas p "
+            . "INNER JOIN temas_peliculas tp ON p.id_temaPelicula = tp.id "
+            . "WHERE p.id = $id";
     $resultado = mysqli_query($conn, $sql);
     $peliculas = mysqli_fetch_assoc($resultado);
     $imagenPeliculas = $peliculas['imagen'];
@@ -39,7 +39,7 @@ if (isset($_POST['submit']) && isset($_GET['id']))
         echo 'Error en la insercción de peliculas: ' . mysqli_error($conn);
     }
 }
-    mysqli_close($conn);
+mysqli_close($conn);
 ?>
 
 <main class="principal principal-1">
@@ -64,7 +64,6 @@ if (isset($_POST['submit']) && isset($_GET['id']))
                         <p class="tamanio-txt">
                             Reparto: <?php echo htmlspecialchars($peliculas['reparto']); ?><br>
                             Director: <?php echo htmlspecialchars($peliculas['director']); ?><br>
-                            Género: <?php echo htmlspecialchars($peliculas['genero']); ?><br>
                             Descripción: <?php echo htmlspecialchars($peliculas['descripcion']); ?>
                         </p>
                     </div>
@@ -77,19 +76,20 @@ if (isset($_POST['submit']) && isset($_GET['id']))
             <div class="text-center block-heading margen-titulo-com">
                 <h2 class="text-left text-info" style="font-size: 30px;">Comentarios</h2>
             </div>
-            <?php foreach ($comentariosPeli as $comentario){ ?>
-            <div class="text-center block-heading">
-                <p class="text-left tamanio-usuario-com">
-                    <img class="rounded-circle com-usuario" src="<?= $base ?>imagenesUsuario/<?php echo htmlspecialchars($comentario['imagen']); ?>"><?php echo htmlspecialchars($comentario['nombre']) ?>
-                </p>
-                <p class="text-justify tamanio-com"><?php echo htmlspecialchars($comentario['comentario']) ?></p>
-                <hr>
-            </div>
+            <?php foreach ($comentariosPeli as $comentario)
+            { ?>
+                <div class="text-center block-heading">
+                    <p class="text-left tamanio-usuario-com">
+                        <img class="rounded-circle com-usuario" src="<?= $base ?>imagenesUsuario/<?php echo htmlspecialchars($comentario['imagen']); ?>"><?php echo htmlspecialchars($comentario['nombre']) ?>
+                    </p>
+                    <p class="text-justify tamanio-com"><?php echo htmlspecialchars($comentario['comentario']) ?></p>
+                    <hr>
+                </div>
             <?php } ?>
             <div class="text-center block-heading">
                 <form class="formulario ancho-form" action="comment-movies.php?id=<?php echo $peliculas['id'] ?>" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <textarea class="form-control alt-form-com" name="comentario" id="comentario" autofocus><?php echo htmlspecialchars($comentariopeli) ?></textarea>
+                        <textarea class="form-control alt-form-com" name="comentario" id="comentario" autofocus></textarea>
                     </div>
                     <input class="btn btn-info btn-block ancho-btn-com" type="submit" name="submit" value="Comentar">
                 </form>
