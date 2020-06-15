@@ -2,7 +2,9 @@
 ob_start();
 require_once './includes/nav-login-user.php';
 
-$sql = 'SELECT * FROM peliculas p INNER JOIN temas_peliculas tp ON p.id_temaPelicula = tp.id  ORDER BY titulo';
+$sql = "SELECT p.id, p.titulo, p.reparto, p.director, p.imagen, p.descripcion, tp.genero "
+            . "FROM peliculas p "
+            . "INNER JOIN temas_peliculas tp ON p.id_temaPelicula = tp.id ORDER BY titulo";
 $resultado = mysqli_query($conn, $sql);
 $peliculas = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 mysqli_free_result($resultado);
