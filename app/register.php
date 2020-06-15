@@ -25,7 +25,7 @@ if (isset($_POST['submit']))
     }
     //Crear cuenta
     $sql = "INSERT INTO usuarios(nombre, usuario, contrasenia, rol, imagen) "
-            . "VALUES('$nombre', '$usuario', '$contrasenia', 0, '$filename')";
+            . "VALUES('$nombre', '$usuario', '$contrasenia', 1, '$filename')";
     if (mysqli_query($conn, $sql))
     {
         /*

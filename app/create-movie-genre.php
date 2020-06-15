@@ -1,6 +1,19 @@
 <?php
 ob_start();
 require_once './includes/nav-login.php';
+if (isset($_POST['submit']))
+{
+    $genero = mysqli_real_escape_string($conn, $_POST['genero']);    
+    $sql = "INSERT INTO temas_peliculas(genero) "
+            . "VALUES('$genero')";
+    if (mysqli_query($conn, $sql))
+    {
+        header('Location: movie-genre.php');
+    } else
+    {
+        echo 'Error al insertar en temas peliculas, verifique query: ' . mysqli_error($conn);
+    }
+}
 ?>
 
 <main class="principal principal-1">
@@ -9,12 +22,12 @@ require_once './includes/nav-login.php';
             <div class="text-center block-heading padding-titulo-formularios">
                 <h2 class="text-info tamanio-titulo">Crear género de películas</h2>
             </div>
-            <form class="formulario" enctype="multipart/form-data">
+            <form class="formulario" method="POST" action="create-movie-genre.php">
                 <div class="form-group">
                     <label for="">Género de película</label>
-                    <input class="form-control" type="text">
+                    <input class="form-control" name="genero" id="genero" type="text" pattern="[A-Z a-z]+" required="true">
                 </div>
-                <input class="btn btn-info btn-block" type="submit" name="submit" value="Crear">
+                <input class="btn btn-success btn-block" type="submit" name="submit" value="Crear">
             </form>
         </div>
     </section>

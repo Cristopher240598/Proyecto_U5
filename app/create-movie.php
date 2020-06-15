@@ -40,6 +40,7 @@ if (isset($_POST['submit']))
         echo 'Error en la insercción de pelicula: ' . mysqli_error($conn);
     }
 }
+mysqli_close($conn);
 ?>
 
 <main class="principal principal-1">

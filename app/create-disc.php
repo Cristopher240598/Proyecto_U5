@@ -2,6 +2,11 @@
 ob_start();
 require_once './includes/nav-login.php';
 
+ $sql2 = "SELECT * FROM temas_discos";
+    $resultSet = mysqli_query($conn, $sql2);
+    $temas = mysqli_fetch_all($resultSet, MYSQLI_ASSOC);
+    mysqli_free_result($resultSet);
+
 if (isset($_POST['submit']))
 {
     $título = mysqli_real_escape_string($conn, $_POST['titulo']);
@@ -11,6 +16,7 @@ if (isset($_POST['submit']))
     $genero = mysqli_real_escape_string($conn, $_POST['genero']);
     $descripcion = mysqli_real_escape_string($conn, $_POST['descripcion']);
     //Guardar la imagen
+
     if (isset($_FILES['imagen']))
     {
         $file = $_FILES['imagen'];
@@ -26,7 +32,7 @@ if (isset($_POST['submit']))
             move_uploaded_file($file['tmp_name'], 'imagenesDiscos/' . $filename);
         }
     }
-    $sql = "INSERT INTO discos(id_temaDisco, titulo, artista, disquera, numeroCanciones, imagen, descripcion) "
+    $sql = "INSERT INTO audifonos(id_temaDisco, titulo, artista, disquera, numeroCanciones, imagen, descripcion) "
             . "VALUES('$genero', '$título', '$artista', '$disquera', '$canciones', '$filename', '$descripcion')";
     if (mysqli_query($conn, $sql))
     {
@@ -35,6 +41,7 @@ if (isset($_POST['submit']))
     {
         echo 'Error al insertar en discos, verifique query: ' . mysqli_error($conn);
     }
+    mysqli_close($conn);
 }
 ?>
 
@@ -65,13 +72,9 @@ if (isset($_POST['submit']))
                     <label for="genero">Género*</label>
                     <select class="form-control ancho-genero" name="genero" id="genero" required="true">
                         <optgroup label="Géneros musicales">
-                            <option value="1">Rock</option>
-                            <option value="2">Pop</option>
-                            <option value="3">Electrónica</option>
-                            <option value="4">Banda/Regional Mexicano</option>
-                            <option value="5">Metal</option>
-                            <option value="6">Opera</option>
-                            <option value="7">Ritmos latinos</option>
+                            <?php foreach ($temas as $items) { ?>
+                                <option value="<?php echo htmlspecialchars($items['id']); ?>"><?php echo htmlspecialchars($items['genero']); ?></option>
+                            <?php } ?>
                         </optgroup>
                     </select>
                 </div>

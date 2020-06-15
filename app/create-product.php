@@ -54,6 +54,7 @@ if (isset($_POST['submit']))
                     <label for="">Imagen</label>
                     <input type="file" name="imagen" id="imagen" autofocus accept="image/*" required>
                 </div>
+                
                 <div class="form-group d-flex justify-content-center">
                     <img class="ancho-imagen" src="" id="imagenSalida">
                 </div>
