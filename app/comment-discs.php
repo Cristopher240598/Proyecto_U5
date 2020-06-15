@@ -6,37 +6,37 @@ if (isset($_GET['id']))
 {
     $id = mysqli_real_escape_string($conn, $_GET['id']);
     $sql = "SELECT * FROM discos WHERE id = $id";
-    
+
     $resultSetQ = mysqli_query($conn, $sql);
     $discos = mysqli_fetch_assoc($resultSetQ);
-    
+
     $imagenDisco = $discos['imagen'];
     mysqli_free_result($resultSetQ);
-    
+
     //Comentarios
-    $sqlComD = "SELECT comD.comentario, us.nombre, us.imagen 
-        FROM comentarios_discos comD 
-        INNER JOIN usuarios us 
-        ON comD.id_usuario = us.id 
+    $sqlComD = "SELECT comD.comentario, us.nombre, us.imagen
+        FROM comentarios_discos comD
+        INNER JOIN usuarios us
+        ON comD.id_usuario = us.id
         WHERE comD.id_disco= $id "
             . "ORDER BY comD.id";
-    
+
     $resComD = mysqli_query($conn, $sqlComD);
-    
+
     $comentriosAu = mysqli_fetch_all($resComD, MYSQLI_ASSOC);
-    
+
     mysqli_free_result($resComD);
 }
 
 if (isset($_POST['submit']) && isset($_GET['id']))
 {
     $idD = mysqli_real_escape_string($conn, $_GET['id']);
-    
+
     $comentario = mysqli_real_escape_string($conn, $_POST['comentario']);
-    
+
     $sql = "INSERT INTO comentarios_discos(id_disco, id_usuario, comentario) "
             . "VALUES($idD, $idUsuarioLog, '$comentario')";
-    
+
     if (mysqli_query($conn, $sql))
     {
         header("Location: comment-discs.php?id=$idD");
@@ -94,7 +94,7 @@ if (isset($_POST['submit']) && isset($_GET['id']))
             <div class="text-center block-heading">
                 <form class="formulario ancho-form" action="comment-discs.php?id=<?php echo $discos['id'] ?>" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <textarea class="form-control alt-form-com" name="comentario" id="comentario" autofocus></textarea>
+                        <textarea class="form-control alt-form-com" name="comentario" id="comentario" maxlength="16,777,215" onchange="valDesc('comentario')" autofocus></textarea>
                     </div>
                     <input class="btn btn-info btn-block ancho-btn-com" type="submit" name="submit" value="Comentar">
                 </form>
@@ -102,6 +102,17 @@ if (isset($_POST['submit']) && isset($_GET['id']))
         </div>
     </section>
 </main>
+
+<script>
+  function valDesc(idinput){
+    x = document.getElementById(idinput).value;
+    if (validardesc(x)) {
+      document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+    }else{
+      document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+    }
+  }
+</script>
 
 <?php
 ob_end_flush();

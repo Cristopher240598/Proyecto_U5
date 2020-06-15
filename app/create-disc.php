@@ -106,7 +106,6 @@ if (isset($_POST['submit']))
 
       function valNumCanciones(idinput){
         x = document.getElementById(idinput).value;
-        alert("987654")
         if (validarnumero2(x)) {
           document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
         }else{

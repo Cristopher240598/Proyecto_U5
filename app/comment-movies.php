@@ -14,10 +14,10 @@ if (isset($_GET['id']))
     $imagenPeliculas = $peliculas['imagen'];
     mysqli_free_result($resultado);
     //Comentarios
-    $sqlComenta = "SELECT comP.comentario, us.nombre, us.imagen 
+    $sqlComenta = "SELECT comP.comentario, us.nombre, us.imagen
         FROM comentarios_peliculas comP
-        INNER JOIN usuarios us 
-        ON comp.id_usuario = us.id 
+        INNER JOIN usuarios us
+        ON comp.id_usuario = us.id
         WHERE comP.id_pelicula = $id "
             . "ORDER BY comP.id";
     $resComAu = mysqli_query($conn, $sqlComenta);
@@ -89,7 +89,7 @@ if (isset($_POST['submit']) && isset($_GET['id']))
             <div class="text-center block-heading">
                 <form class="formulario ancho-form" action="comment-movies.php?id=<?php echo $peliculas['id'] ?>" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <textarea class="form-control alt-form-com" name="comentario" id="comentario" autofocus><?php echo htmlspecialchars($comentariopeli) ?></textarea>
+                        <textarea class="form-control alt-form-com" name="comentario" id="comentario" maxlength="16,777,215" onchange="valDesc('comentario')" autofocus><?php echo htmlspecialchars($comentariopeli) ?></textarea>
                     </div>
                     <input class="btn btn-info btn-block ancho-btn-com" type="submit" name="submit" value="Comentar">
                 </form>
@@ -97,6 +97,17 @@ if (isset($_POST['submit']) && isset($_GET['id']))
         </div>
     </section>
 </main>
+
+<script>
+  function valDesc(idinput){
+    x = document.getElementById(idinput).value;
+    if (validardesc(x)) {
+      document.getElementById(idinput).style.backgroundColor = "#CEF6D8";
+    }else{
+      document.getElementById(idinput).style.backgroundColor = "#F6CECE";
+    }
+  }
+</script>
 
 <?php
 ob_end_flush();
