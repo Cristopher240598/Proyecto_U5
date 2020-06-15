@@ -2,7 +2,7 @@
 ob_start();
 require_once './includes/nav-login.php';
 
-$sql = 'SELECT id, titulo, descripcion  FROM peliculas';
+$sql = 'SELECT * FROM peliculas';
 $result = mysqli_query($conn, $sql);
 $peliculas = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_free_result($result);
